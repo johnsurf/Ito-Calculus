@@ -1,0 +1,729 @@
+\section{Appendices}
+
+\subsection{Abbreviations and Notation}
+\label{sec:notation}
+
+$\define$ \quad  ~is defined as \\ 
+IID \quad Independent Identically Distributed \\
+SII \quad Stationary Independent Increments \\  
+{\elevenit iff} \quad ~if and only if \\ 
+a.s.  \quad almost surely\\
+i.o. \quad infinitely often\\
+m.s. \quad mean square (same as quadratic mean)\\
+o.n. \quad orthonormal\\ 
+q.m. \quad  quadratic mean (same as mean square)\\
+wp1 \quad with probability 1\\
+w.r.t \quad with respect to \\
+$\{x_n\}$\quad ~ is a list or sequence of numbers $x_n, n = 1, 2, \hdots$ \\
+$x_n \to x$ ~means $\displaystyle{\lim_{\ninfty} x_n = x}$ \\
+$\uparrow$\quad is used to denote monotonically increasing sequence $\{x_n\}$, which converges from below:  $$x_n \uparrow x \implies x_1 < x_2 < \hdots \hbox{~and~} \lim_{\ninfty} x_n = x.$$
+For sets $A_n \uparrow A$ means $A_1 \subset A_2 \subset \hdots $ and $\displaystyle{A=\bigcup\limits_{n=1}^\infty A_n}$.\\
+
+$\downarrow$\quad is used to denote a monotonically decreasing series which converges from above: $$x_n \downarrow x \implies x_1 > x_2 > \hdots \hbox{~and~} \lim_{\ninfty} x_n = x.$$
+For sets $A_n \downarrow A$ means $A_1 \supset A_2 \supset \hdots $ and $\displaystyle{A=\bigcap\limits_{n=1}^\infty A_n}$.\\
+
+%Definition of Ergodic Stochastic Processes:\\
+%1) Processes such that the {\elevenit time average}\/ equals the {\elevenit assemble average} are called {\elevenit ergodic}. \\
+%2) Markov chains: positive, recurrent, aperiodic states are called {\elevenit ergodic}.\\
+%3) Markov chains: if the limiting probability for finding the system in state $j$ is independent of the initial state $i$, then the state $j$ is called {\elevenit ergodic}. If all the states are ergodic, then 
+%the Markov chain is called {\elevenit ergodic}. An aperiodic positive-recurrent Markov chain is defined to be an ergodic chain, and the interpretation of this is the same as with finite-state Markov chains. In particular, for ergodic chains, the steady-state probability $\pi_j$ is, with probability 1, the time average rate of that state. It is also the time and ensemble average rate of the state, and, from 
+%$$\lim_{\ninfty} P^n_{ij} = {1\over\overline{T}_{jj}},$$ the limiting probability of the state, independent of the starting state.
+
+\subsection{Equivalence Relations}
+\label{sec:equivalence}
+
+An important technique for dividing a set into mutually exclusive subsets is the method of equivalence relations \cite{Hall}.
+\begin{definition}
+Suppose in a set $A$ we have a relation $R$ defined between pairs of elements $x$ and $y$, $x R y$ indicating that $x$ and $y$ stand in the relation $R$. 
+Suppose that $R$ has the following three properties: \\
+
+(1) $R$ is reflexive: i.e., $x R x$ for all $x\in A$.\\
+(2) $R$ is symmetric: i.e., $x R y \implies y R x$.\\
+(3) $R$ is transitive: i.e., $x R y$ and $y R z \implies x R z$.
+Then $R$ is an {\elevenit Equivalence Relation}.
+\end{definition}
+\begin{theorem}
+An equivalence relation $R$ divides $A$ into mutually exclusive sets so that every element of $A$ is in one and only one subset, and so that two elements are in the same 
+subset iff they stand in the the relation $R$ to one another. 
+\end{theorem}
+\begin{proof}
+Given any element $x$ in $A$ consider all the elements $y$ such that $x R y$. These elements form a subset of $A$ which we call $A_x$. Now two elements are in the same subset $A_x$, iff they stand 
+in the relation $R$ with one another. For suppose $y R z$ and $y \in A_x$. Then $x R y$ and, because $R$ is transitive, $x R z$. Then $z \in A_x$. Also, if $y$ and $z$ are both in $A_x$, then $x R y$ and 
+$x R z$. By the symmetric property $y R x$. Together with $x R z$ we have $y R x$ and $x R z$ and therefore $y R z$ by transitivity.\\
+
+For each element $x \in A$ we have a subset $A_x$. These subsets will not all be distinct. We next show that any two such subsets are either mutually exclusive of identical. Suppose both $A_x$ and $A_y$ both have an element $z$ in common. Then $x R z$ and $y R z$,. By the symmetric property we have $z R y$ and therefore $x R y$ by transitivity. Now pick any element $w$ of $A_x$, $x R w$. Because 
+$x R y$ we also have $y R x$ and therefore $y R w$ also by transitivity. Therefore $w \in A_y$, or $A_x \subset A_y$. By the same reasoning, exchanging $A_x$ and $A_y$ and going through the same line of reasoning, we must also have $A_y \subset A_x$. So $A_x$ and $A_y$ are identical. Therefore we have a list of mutually exclusive subsets $A_{x_1}, A_{x_2}, \hdots$. Also, for any element $z \in A$ we have $z R z$ by the reflexive property, $z$ must be in one of the subsets, i.e., $A_z$. \qed
+\end{proof}
+
+\subsection{Various Modes of Convergence}
+\label{sec:convergence}
+Given random variables $Z, Z_1, Z_2 ...$ we say that \\
+
+i) the sequence $\{Z_n\}$ converges to $Z$ {\elevenit surely}\/ if, given any $\epsilon > 0$ there exists an integer $N > 0$ such that
+$$ | Z_n - Z | < \epsilon\quad\hbox{for all $n\ge N$}$$ This mode of convergence is also denoted by  $Z_n \rightarrow Z.$ \\
+
+ii) the sequence $\{Z_n\}$ converges to $Z$ {\elevenit with probability one}\/ (wp1) iff for every $\epsilon>0$
+$$\lim_{N \to \infty} P\Big[\Big(\max_{n\ge N} |Z_n - Z| \Big) > \epsilon \Big] = 0.$$ Such a sequence is said to converge {\elevenit almost surely}\/ (a.s.) which is also denoted by     
+$$P[\lim_{\ninfty} Z_n = Z] = 1.$$
+iii) the sequence $\{Z_n\}$ converges to $Z$ {\elevenit in probability}\/ if for every $\epsilon>0$ $$\lim_{\ninfty} P\big[ |Z_n - Z | > \epsilon \big] = 0,$$ 
+iv) the sequence $\{Z_n\}$ converges to $Z$ in {\elevenit mean square}\/ (m.s.)  or in {\elevenit quadratic mean}\/ (q.m.), if each random variable $Z_n$ has a finite mean square and if 
+$$\lim_{\ninfty}\, E\big[ (Z_n - Z)^2 \big] = 0.$$
+v) a sequence of random variables can also converge {\elevenit in distribution}\/ if their probability distribution functions converge to a limiting function $$\lim_{\ninfty} f_{Z_n}(z) = f_Z(z)$$everywhere except on a set of measure zero.\\
+
+vi) In addition to the above convergence types a sequence $\{ R(v), v=0,1, \hdots \}$ is said to converge to 0 in Ces\`aro mean as $v \to \infty$ if $$\lim_{t\rightarrow\infty} {1\over t}\sum_{v=0}^{t-1}\,R(v) = 0.$$
+
+\subsection{DeMorgan's Laws} The following useful relationship between the three basic operations of forming unions, intersections, and complements of sets is known as {\elevenit DeMorgan's laws}\/
+\label{sec:DeMorgan}
+\begin{eqnarray*}
+\Big(\bigcup\limits_{i=1}^n A_i  \Big)^c   =  \bigcap\limits_{i=1}^n\, A_i^c \\
+\Big(\bigcap\limits_{i=1}^n A_i  \Big)^c   =  \bigcup\limits_{i=1}^n\, A_i^c
+\end{eqnarray*} This is a standard result in set theory. The usual method of proof is the following:
+Suppose that $x \in \big(\bigcup\limits_{i=1}^n A_i  \big)^c$ then $x$ is not contained in  $\bigcup\limits_{i=1}^n A_i$, which means it is not contained in any of the events $A_i, i = 1,2, \hdots n$, implying that $x$ is contained in $A_i^c$ for all $i=1,2,\hdots n$ and therefore contained in  $\bigcap\limits_{i=1}^n\, A_i^c$. Going in the other direction, suppose $x\in  \bigcap\limits_{i=1}^n\, A_i^c$. Then $x$ is contained in $A_i^c$ for all $i=1,2,\hdots n$, which means that $x$ is not contained in $A_i$ for any $i=1,2,\hdots n$, implying that $x$ is not contained in $\bigcup\limits_{i=1}^n A_i $, which means $x \in \big(\bigcup\limits_{i=1}^n A_i  \big)^c$.\\
+
+To prove the second DeMorgan's laws, apply the first to $A_i^c$ and use the fact that $A_i = (A_i^c)^c$ for any set. We obtain 
+\begin{eqnarray*} 
+\Big(\bigcup\limits_{i=1}^n A_i^c  \Big)^c  &=&  \bigcap\limits_{i=1}^n\, (A_i^c)^c \\
+                                                   &=&  \bigcap\limits_{i=1}^n\, A_i 
+\end{eqnarray*} By taking the complement of both sides we find the second of DeMorgan's laws:
+$$\bigcup\limits_{i=1}^n\, A_i^c = \Big(\bigcap\limits_{i=1}^n A_i  \Big)^c $$ 
+
+\subsection{Fourier Theorems}
+\label{sec:Fourier}
+
+For $n$-vectors $x$ and $k$ we define the dot product of these vectors by 
+$$<x\cdot k> = \sum_{i=1}^n\, x_ik_i$$ Here $x$ is an element of $\mathbb{R}^n$ and $k$ is in the ``Fourier transform space'' or the ``momentum space'' corresponding to $\mathbb{R}^n$ which is also $n$-dimensional, but is a different space (i.e., the $k$ is an element of the dual-space of $\mathbb{R}^n$).
+Let $f(x)$ be a subset of integrable and square-integrable functions on $\mathbb{R}^n$, $f(x) \subset L^1(\mathbb{R}^n) \cap L^2(\mathbb{R}^n)$. The Fourier transform of $f(x)$ is denoted by $\hat{f}(k)$ and is given in symmetric form by 
+\begin{equation}\hat{f}(k)  = {1\over\sqrt{(2\pi)^n}}\int_{\mathbb{R}^n} f(x) e^{-i <x\cdot k>}\,d^nk\label{eqn:Fourier}\end{equation} The inverse Fourier transform is given also in symmetric form by 
+\begin{equation}f(x)  = {1\over\sqrt{(2\pi)^n}}\int_{\mathbb{R}^n} \hat{f}(k) e^{ i <x\cdot k>}\,d^nx\label{eqn:InvFourier}\end{equation} \\
+One of the main theorems of Fourier Analysis is the Plancherel-Parseval theorem which states that the Fourier transform map is an {\elevenit Isometry}\/ with respect to the $L^2$ norm. 
+\begin{theorem}{Plancherel-Parseval theorem:}
+\begin{equation}\int_{-\infty}^\infty  f(x)\overline{g(x)}\, d^nx  = \int_{-\infty}^\infty \hat{f}(k)\overline{\hat{g}(k)}\, d^nk,\label{eqn:Plancherel}\end{equation}
+where $\overline{f}$ is the complex-conjugate of $f$
+\end{theorem}
+
+As can be seen above the functions for which the Fourier integral is applied are square-integrable functions (the are in the function space $L^2$). The norm in this space is defined by 
+\be  \| f \| =  \int_{-\infty}^\infty  f(x)\overline{f(x)}\, d^nx \ee and we assume that $\| f \| < \infty$ implicitly in using Fourier integrals. Fourier series deals with periodic functions. However, no meaning can be attached to the integral 
+\be f_X(\omega) = \int_{-\infty}^\infty e^{-it\omega} X(t) dt \ee
+for many stochastic processes, such as covariance stationary processes, since their sample functions are non-periodic and are undamped (do not fall off at infinity in such a manner as to be in the space of $L^2$ functions). It is possible to define a generalized harmonic analysis of stochastic processes (a method of assigning to each frequency $\omega$ a measure of its contribution to the ``content'' of the process) as shown in \cite{Wiener3}.
+
+\subsection{Cauchy-Schwarz Inequality}
+\label{sec:CauchySchwarz}Here we include the proof of the Cauchy-Schwarz inequality for sequences and, by extension, to integrals:\\
+
+(Cauchy-Schwarz inequality). Let $x=(x_1, x_2, ..., x_N)$ and $y = (y_1, y_2, ..., y_N)$ be elements of $\mathbb{R}^N$. Then 
+$$ \left| \sum_{i=1}^N\, x_i y_i \right|^2 \le \sum_{i=1}^N\, x_i^2 \cdot \sum_{i=1}^N\, y_i^2$$
+
+This inequality has many different proofs. We present the following proof. If every $x_i$ is zero, then the equality sign in the above expression holds. So let us assume that there is at least one $x_i$ not zero. We form the function $$f(\lambda) = \sum_{i=1}^N\, (y_i - \lambda x_i)^2 \ge 0$$ which is nonnegative for all real values of $\lambda$. We set 
+$$A = \sum_{i=1}^N\, x_i^2 \quad  B = \sum_{i=1}^N\, x_i y_i \quad C = \sum_{i=1}^N\, y_i^2$$ Then we can expand $f(\lambda)$ as
+$$f(\lambda) = A\lambda^2 - 2B\lambda + C \ge 0,~~ \hbox{for} ~~ A>0.$$ Since the only real root for $f(\lambda)$ occurs when $y_i = \lambda x_i$, then unless this is the case $f(\lambda)$ can only have complex roots. Examining the solutions to the quadratic equation we have $$\lambda = {2B \pm \sqrt{4B^2 - 4AC} \over 2A}$$ or $$\lambda = {B \pm \sqrt{B^2 - AC} \over A}.$$ $f(\lambda)$ has complex roots if $B^2 < AC$ or 
+$$ \left| \sum_{i=1}^N\, x_i y_i \right|^2 \le \sum_{i=1}^N\, x_i^2 \cdot \sum_{i=1}^N\, y_i^2$$
+
+Let us define the norm of an $n$-vector.
+\begin{definition}
+The vector dot-product of two $n$ vectors $u$ and $v$ is defined as 
+$$u\cdot v = \sum_{i=1}^n u_i v_i.$$ 
+\end{definition}
+
+With the above definition $u\cdot u$ is the square of the magnitude of $u$. The magnitude of $u$ is also known as the norm of $u$ and is denoted by $\| u \|$.
+
+\begin{definition}
+The norm of an $n$-vector $u$ is given in terms of the vector dot-product by 
+$$\| u \| = \sqrt{u \cdot u} $$
+If $u$ is complex then let $\overline{u}$ stand for the complex-conjugate and define the norm of $u$ as
+$$\| u \|^2 = \sum_{i=1}^n u_i \overline{u_i} = u \cdot \overline{u} $$
+\end{definition}
+
+A useful shorthand for $u \cdot u = \| u \|^2$ is $u^2$, where the squared vector is obtained by dotting the vector $u$ with itself. \\
+
+With the above definition of norm we can also write the Cauchy-Schwarz inequality as
+$$ \| x \cdot y \| \le \|x \|  \cdot \| y \|$$
+
+The Cauchy-Schwarz inequality can be used to prove the Triangle Inequality for $n$-vectors. 
+$$\|u + v \| \le \| u \| + \| v \|$$
+\begin{proof}
+Take $u$ and $v$ to be $n$-vectors. Then the squared norm of $u+v$ is 
+$$(u+v)^2 = u^2 + 2u\cdot v + v^2$$ and by the Cauchy-Schwarz in equality $\|u\cdot v\| \le  \|u\| \|v\| $. Therefore 
+$$(u+v)^2 \le u^2 + 2\|u\| \|v\| + v^2 = (\|u\| + \|v\|)^2$$ and finally, 
+$$\| u + v \| \le \| u \| + \|v\|$$
+\end{proof}
+ 
+The Cauchy-Schwarz inequality can be extended to the inner product space of square-integrable complex-valued functions:
+
+$$ \left| \int_{\mathbb{R}^N}\, f(x) \overline{g(x)}\, \right|^2 \le \int_{\mathbb{R}^N}\, |f(x)|^2\, dx \cdot \int_{\mathbb{R}^N}\, |g(x)|^2 dx$$ where $\overline{g(x)}$ is the complex conjugate of $g(x)$ and $|f(x)|^2 = f(x)\overline{f(x)}$.\\
+
+We can also write the above inequality using the concept of expectation for random variables. \\
+
+{\bf Cauchy-Schwarz Inequality for random variables.} For any two random variables $X$ and $Y$ we can write the Cauchy-Schwarz inequality as 
+$$(E[XY])^2 \le E[X^2]E[Y^2],$$ where equality holds if and only if $X = \alpha Y$, for some constant $\alpha \in R$.
+
+\begin{theorem}
+If $E[X^2] < \infty$, then $E[|X|] < \infty$ 
+\end{theorem}
+\begin{proof}
+Taking the square root in the Cauchy-Schwarz inequality and setting $y\equiv1$, we have
+$$E[|X|] < (E[|X^2|])^{1\over2} < \infty.\qed$$
+\end{proof}
+
+It can also be shown (we skip the proof) that 
+\begin{theorem}
+If $E[|X|^n] < \infty$, then $E[|X|^m] < \infty$ for all $1\le m \le n$.
+\end{theorem}
+Hence if the $n$-th moment of $X$ is finite, then all the lower moments of $X$ will also be finite. 
+
+\subsection{Generating Functions}
+\label{sec:generating}
+
+The Moment Generating Function  (m.g.f) $\psi_X(t)$ of the random variable $X$ is defined for all real values of $t$ by
+\begin{eqnarray*}
+\psi_X(t) &=& E[e^{tX}] \\ \\
+&=&\Bigg\{
+\begin{array}{ll}
+\sum_x e^{tx} p(x) & \quad  \hbox {if $X$ is discrete with mass function $p(x)$} \\ \\
+\int_{-\infty}^{\infty}\, e^{tx} f_X(x) \, dx & \quad \hbox{if $X$ is continuous with density $f_X(x)$} \\
+\end{array}
+\end{eqnarray*}
+
+$\psi_X(t)$ is called the m.g.f. because all the moments of $X$ can be obtained by differentiating $\psi_X(t)$ a sufficient number of times and setting $t=0$ afterwards. For example 
+
+\begin{eqnarray*}
+\psi_X'(t) &=& {d\over dt} E[e^{tX}] \\
+&=& E[{d\over dt} (e^{tX})] \\
+&=& E[X e^{tX}]
+\end{eqnarray*} 
+
+Therefore $E[X] = \psi'(0)$. Similarly all the higher moments can be generated by successive differentiation.\\
+ 
+Consider the m.g.f. for the standard Gaussian random variable $Z \in N(0,1)$:
+\begin{eqnarray*}
+\psi_Z(t) &=& {1\over \sqrt{2\pi}} \int_{-\infty}^{\infty}\, e^{tx}\, e^{-x^2/2}\, dx\\
+               &=& {1\over \sqrt{2\pi}} \int_{-\infty}^{\infty}\, e^{-(x^2 - 2 tx)/2}\, dx\\
+               &=& {1\over \sqrt{2\pi}} \int_{-\infty}^{\infty}\, e^{-{(x-t)^2\over2} + {t^2\over2}} \, dx\\
+               &=& e^{t^2/2}\, {1\over \sqrt{2\pi}} \int_{-\infty}^{\infty}\, e^{-{(x-t)^2\over2}}\, dx\\
+               &=& e^{t^2/2}\, {1\over \sqrt{2\pi}} \int_{-\infty}^{\infty}\, e^{-{y^2\over2}}\, dy \quad\hbox{substitution: $y = x-t$}\\
+               &=& e^{t^2/2}
+\end{eqnarray*}
+
+Given that $Z$ is $N(0,1)$ we know that $X = \mu + \sigma Z$ will be normally distributed according to $N(\mu, \sigma^2)$. Therefore the m.g.f. for $X$ can be obtained using the above as follows:
+\begin{eqnarray*}
+\psi_X(t) &=& E[e^{tX}]\\
+               &=& E[e^{t(\mu + \sigma Z)}]\\
+               &=& e^{\mu t}E[e^{t \sigma Z}]\\
+               &=& e^{\mu t}\psi_Z(\sigma t)\\
+               &=& e^{\mu t}e^{(\sigma t)^2/2}\\
+               &=& \exp\big\{\sigma^2 t^2/2 + \mu t\big\}
+\end{eqnarray*}
+
+Closely related to the m.g.f. is the Characteristic Function $\phi(u)$ of $X$ which is defined, for any real number $u$, by
+\be \phi_X(u) = E[e^{iuX}]. \ee
+It is possible that a random variable does not have a finite mean or variance or m.g.f. But a random variable always possesses a characteristic function.\\
+
+\begin{theorem}\label{thm:mgfMultivariateGaussian}
+Consider a set of jointly normally distributed random variables $X_1, \hdots, X_n$ with means $m_j$ and covariances $K_{jk}$ given. The m.g.f. for the set is given by
+\be \psi_{X_1, \hdots, X_n}(u_1, \hdots, u_n) = \exp\big\{  \sum_{j=1}^n u_j m_j + {1\over2} \sum_{j,k=1}^n\, u_j K_{jk} u_k \big\} \ee
+\end{theorem}
+\begin{proof}
+By definition the m.g.f for the jointly normal random variables is given by
+\bearray E[e^{u_1X_1 + \hdots + u_nX_n}] &=& \int f_{X_1, ..., X_n}(x_1, ..., x_n)\, e^{u_1 x_1 + \hdots + u_n x_n} dx_1\hdots dx_n \hbox{~in matrix notation:}  \\
+&=&\int {1\over(2\pi)^{n/2}} {1\over|K|^{1/2}} \exp\big\{ - {1\over2} ({\bf x} - {\bf m})^T {\bf K}^{-1} ({\bf x} - {\bf m} ) + {\bf u}^T \cdot {\bf x} \big\} \, dx_1 \hdots dx_n. \\
+\eearray
+Let us examine the exponent in the above equation. Using the change of variables ${\bf y = x-m}$ we have 
+\bearray - {1\over2} ({\bf x} - {\bf m})^T {\bf K}^{-1} ({\bf x} - {\bf m} ) + {\bf u}^T \cdot {\bf x} &=& - {1\over2} {\bf y}^T {\bf K}^{-1} {\bf y}   + {\bf u}^T \cdot ({\bf y + m})\\
+&=& \Big\{- {1\over2} {\bf y}^T {\bf K}^{-1} {\bf y}   + {\bf u}^T \cdot {\bf y}\Big\} +  {\bf u^T \cdot m}
+\eearray
+The last term on the RHS is independent of the variable of integration and can be moved outside the integral. 
+The method of completing the square can be used to search for a ${\bf z}$ and $\lambda$ such that 
+\be \Big\{- {1\over2} {\bf y} ^T {\bf K}^{-1} {\bf y}   + {\bf u}^T \cdot {\bf y} \Big\}  = - {1\over2} ({\bf y} - {\bf z})^T  {\bf K}^{-1} ({\bf y} - {\bf z} )  + \lambda \label{eqn:completeSquare}\ee
+Now we assume that  ${\bf K}^{-1} $ (and also the inverse matrix ${\bf K} $) is symmetric and expand the RHS of Eq. [\ref{eqn:completeSquare}] to obtain:
+\bearray -{1\over2} ({\bf y} - {\bf z})^T  {\bf K}^{-1} ({\bf y} - {\bf z} )  + \lambda &=&  
+-{1\over2} {\bf y}^T  {\bf K}^{-1} {\bf y}
+-{1\over2} {\bf y}^T  {\bf K}^{-1} {\bf z}
+-{1\over2} {\bf z}^T  {\bf K}^{-1} {\bf y}
+-{1\over2} {\bf z}^T  {\bf K}^{-1} {\bf z} + \lambda \\
+&=& -{1\over2} {\bf y}^T  {\bf K}^{-1} {\bf y}
+- {\bf z}^T  {\bf K}^{-1} {\bf y}
+ -{1\over2} {\bf z}^T  {\bf K}^{-1} {\bf z} + \lambda \hbox{~ by symmetry of ${\bf K}$}\\
+ \eearray
+ By comparing the LHS of Eq. [\ref{eqn:completeSquare}] to the RHS of the above we find that
+ \bearray
+ {\bf z}^T &=& {\bf u^T K} \\
+ \lambda &=& {1\over2} {\bf z}^T{\bf K}^{-1}{\bf z}  = {1\over2} {\bf u}^T {\bf K} {\bf K}^{-1} {\bf K}^T {\bf u} = {1\over2} {\bf u}^T {\bf K} {\bf u}  \hbox{~~also by symmetry of {\bf K}}
+ \eearray 
+Inserting these results into the expression for $E[e^{u_1X_1 + \hdots + u_nX_n}]$, we find 
+\bearray E[e^{u_1X_1 + \hdots + u_nX_n}] &=& \int f_{X_1, ..., X_n}(x_1, ..., x_n)\, e^{u_1 x_1 + \hdots + u_n x_n} dx_1\hdots dx_n \hbox{~in matrix notation:}  \\
+&=&\int {1\over(2\pi)^{n/2}} {1\over|K|^{1/2}} \exp\big\{ - {1\over2} ({\bf x} - {\bf m})^T {\bf K}^{-1} ({\bf x} - {\bf m} ) + {\bf u}^T \cdot {\bf x} \big\} \, dx_1 \hdots dx_n. \\
+&=&\exp\{{\bf u}^T\cdot{\bf m} + {1\over2} {\bf u}^T {\bf K} {\bf u}  \} {1\over(2\pi)^{n/2}} {1\over|K|^{1/2}} \int \exp\big\{-{1\over2} ({\bf y} - {\bf z})^T {\bf K}^{-1} ({\bf y} - {\bf z} ) \big\} \, dy_1 \hdots dy_n. \\
+&=&\exp\{{\bf u}^T\cdot{\bf m} + {1\over2} {\bf u}^T {\bf K} {\bf u} \},
+\eearray
+where
+$$1 = {1\over(2\pi)^{n/2}} {1\over|K|^{1/2}} \int \exp\big\{-{1\over2} ({\bf y} - {\bf z})^T {\bf K}^{-1} ({\bf y} - {\bf z} ) \big\} \, dy_1 \hdots dy_n $$for any given vector ${\bf z}$.
+Putting all the above together we find
+\bearray \psi_{X_1, \hdots, X_n}(u_1, \hdots, u_n) 
+&=& E[e^{u_1X_1 + \hdots + u_nX_n}] \\ 
+&=& \exp\{{\bf u}^T\cdot{\bf m} + {1\over2} {\bf u}^T {\bf K} {\bf u} \} \\
+&=& \exp\big\{  \sum_{j=1}^n u_j m_j + {1\over2} \sum_{j,k=1}^n\, u_j K_{jk} u_k \big\}
+\qed
+\eearray 
+%can be written using the Cholesky decomposition as ${\bf K^{-1} = LL}^T$ for some lower triangular matrix ${\bf L}$.  Observe that the determinant of ${\bf K^{-1}}$ is given by 
+%$$|K^{-1}| = |L L^T| = |L||L^T| = |L|^2 \hbox{~ since $|L| = |L^T|$ for any square matrix $L$}$$
+%We then consider a change of variables of the form ${\bf y = L^T(x-z)}$ which can be solved for ${\bf x}$: ${\bf x = (L^T)^{-1}y + z}$.
+%Since ${\bf K = LL}^T$, we can write ${\bf K}^{-1} = ({\bf L}^T)^{-1} {\bf L}^{-1}$ and therefore ${\bf (L^T)^{-1} = K^{-1}L}$
+\end{proof}
+Note that the {\elevenit inverse of the covariance matrix}, ${\bf K}^{-1}$, appears explicitly in the joint probability function 
+$$f_{X_1, ..., X_n}(x_1, ..., x_n) = {1\over(2\pi)^{n/2}} {1\over|K|^{1/2}} \exp\big\{ - {1\over2} ({\bf x} - {\bf m})^T {\bf K}^{-1} ({\bf x} - {\bf m} ) \big\}$$ whereas the covariance matrix ${\bf K}$ appears in the m.g.f. 
+$$\psi_{X_1, \hdots, X_n}(u_1, \hdots, u_n) = \exp\{{\bf u}^T {\bf m} + {1\over2} {\bf u}^T {\bf K} {\bf u} \}.$$
+
+\subsection{Probabilistic Inequalities}
+\label{sec:inequalities}
+%Markov's inequality\\
+\begin{proposition}{Markov's inequality:}
+If $X$ is a random variable that takes only non-negative values, then for any value $a>0$ 
+
+$$P\{x\ge a\} \le {E[X]\over a}$$
+\end{proposition}
+\begin{proof}
+We give a proof for the case where $X$ is continuous with density $f(x)$.
+
+\begin{eqnarray*}
+E[X] &=& \int_0^\infty\, x f(x)\, dx \\
+&=& \int_0^a\, x f(x)\, dx + \int_a^\infty\, x f(x)\, dx\\
+&\ge& \int_a^\infty\, x f(x)\, dx \\
+&\ge& \int_a^\infty a f(x) \, dx \\
+&=& a\int_a^\infty\, f(x)\,dx\\
+&=& a P\{ X \ge a\}\qed
+\end{eqnarray*}
+
+\end{proof}
+
+%Chebyshev's inequality \\
+
+\begin{proposition}{Chebyshev's inequality:}
+If X is a random variable with finite mean $\mu$ and variance $\sigma^2$, then for any value $k>0$
+$$P\{\left|X-\mu\right| \ge k \}  \le {\sigma^2\over k^2}$$
+\end{proposition}
+
+\begin{proof}
+Since $(X-\mu)^2$ is a non-negative random variable, we can apply Markov's in equality (with $a=k^2$) to obtain 
+$$P\big\{ (X-\mu)^2 \ge k^2 \big\} \le {E[(X-\mu)^2]\over k^2}$$ But since $(X-\mu)^2 \ge k^2$ if and only if $|X-\mu|\ge k$, the above equation is equivalent to 
+$$P\big\{|X-\mu| \ge k \big\} \le {E[(X-\mu)^2]\over k^2} = {\sigma^2\over k^2} \qed$$
+\end{proof}
+
+%Kolmogorov's inequality \\
+\begin{proposition}{Kolmogorov's inequality:}
+Let $X_1, X_2, \hdots X_n$ be $n$ independent random variables such that $E[X_i] = 0$ and $\hbox{Var}[X_i] = \sigma_i^2 < \infty, i = 1, 2,\hdots n$. Then, for all $a>0$,
+$$P \Big\{ \max_{i=1,\hdots n} \left| X_1 + \hdots X_i \right| > a \Big\}  \le \sum_{i=1}^n {\sigma_i^2\over a^2}$$
+\end{proposition}
+
+\begin{proof}
+Consider all the sums $S_l = \sum_{i=1}^l X_i, 1\le l \le n$. Then $E[S_l] = 0$ because $E[X_i] = 0$.  Define an event $T$ as follows
+$$ T = \Big\{ 
+\begin{array}{l}
+l \quad \hbox{ if $l$ is the first time}~ |S_l| > a, 1\le l \le n\\
+\infty \quad \hbox{if}~ |S_l| \le a, \hbox{~for all~} 1\le l\le  n
+\end{array}$$
+Notice that the sets of events $\{ T= i \}, i=1,2,\hdots n$ are mutually exclusive since $\{T=l \} \cap \{ T=k\} =\emptyset$ for $1\le l \neq k \le n$. 
+Also, note that $\{ T < \infty \} = \bigcup\limits_{l=1}^n \{T = l\}$.\\
+
+The variance of $S_n$ can be written as
+
+\begin{eqnarray*}
+E[S_n^2] &=& E[(S_k + (S_n - S_k))^2]\\
+&\ge& E[S_n^2; T< \infty] = \sum_{k=1}^nE[S_n^2; T=k] \\
+&=& E\Big[ S_k^2 + (S_n-S_k)^2 + 2S_k(S_n-S_k); T=k\Big]
+\end{eqnarray*}
+$$E[S_n^2] \ge \sum_{k=1}^n E[S_k^2; T=k] + \sum_{k=1}^nE[(S_n-S_k)^2); T = k] + 2\sum_{k=1}^n E[(S_n-S_k) (S_k;T=k)]$$
+Now $$\sum_{k=1}^nE[(S_n-S_k)^2; T = k] \ge 0$$ and 
+$$\sum_{k=1}^n E[(S_n-S_k) (S_k;T=k)] = \sum_{k=1}^n E[(S_n-S_k)]E[(S_k;T=k)]= 0$$ by independence because $E[(S_n-S_k)] = 0$. Therefore we have found
+$$E[S_n^2] \ge \sum_{k=1}^n E[S_k^2; T=k] \ge \sum_{k=1}^n (a^2) P\{ T=k\}$$ or 
+$$E[S_n^2] \ge a^2 \sum_{k=1}^n P\{ T=k\} = a^2 P\{ T < \infty\}$$ which is the same as
+
+$$P\{T<\infty\} \le {E[S_n^2]\over a^2} = \sum_{i=1}^n {\sigma_i^2\over a^2} \qed$$ 
+\end{proof}
+
+Kolmogorov's inequality can be regarded as a generalization of Chebyshev's inequality. However, 
+Kolmogorov's inequality is much stronger than Chebyshev's inequality. Take $X_1, \hdots, X_2$ to be independent zero-mean random variables with variance 
+$\hbox{Var}[X_i] = \sigma^2_i$, then Chebyshev's inequality gives
+
+$$P\{|X_1 + \hdots + X_n | > a  \} \le \sum_{i=1}^n {\sigma^2_i\over a^2}$$whereas Kolmogorov's inequality gives the same bound for the probability of a larger set, namely
+$$\bigcup\limits_{i=1}^n \{ |X_1 + \hdots + X_i | > a\}  $$
+ 
+\subsection{Kronecker's Lemma}
+\begin{proposition}(Kronecker's Lemma) If $a_1, a_2, \hdots $ are real numbers such that $\sum_{i=1}^\infty a_i/i < \infty$, then 
+$$\lim_{\ninfty} \sum_{i=1}^n {a_i\over n} = 0.$$
+\end{proposition}
+
+\subsection{Strong Law of Large Numbers for Independent Random Variables}
+\begin{theorem}
+Let $X_1, X_2, \hdots $ be independent zero-mean random variables with variance $\hbox{Var}[X_i] = \sigma^2_i < \infty$. If $\sum_{i=1}^\infty \sigma^2_i/ i^2 < \infty$, then with probability 1, 
+$$ {X_1 + \hdots + X_n \over n} \to 0, \quad \hbox{as~}  \ninfty$$
+\end{theorem}
+\begin{proof}
+For any $n$ and any $a > 0$, it follows from Kolmogorov's inequality that 
+\begin{equation} P\Big\{ \max_{j=1, \hdots n} \left| \sum_{i=1}^j {X_i\over i} \right| > a  \Big\} \le {\sum_{i=1}^n \hbox{Var}[X_i/i]\over a^2} \le {\sum_{i=1}^\infty \sigma^2_i/i^2 \over a^2}
+\label{eqn:strongLaw}
+\end{equation}
+Define $$E_n = \Big\{ \max_{j=1, \hdots n} \left| \sum_{i=1}^j {X_i\over i} \right| > a  \Big\} $$
+Then, because the $E_n$ is an increasing sequence of events, it follows from the continuity property of probability that
+$$\lim_{\ninfty} P(E_n) = P(\lim_{\ninfty} E_n) = P(\bigcup\limits_1^\infty E_n) = P\Big\{ \max_{j\ge1} \left| \sum_{i=1}^j {X_i\over i} \right| > a   \Big\}$$
+Hence, Eq. [\ref{eqn:strongLaw}] gives us 
+\be P\Big\{ \max_{j\ge 1} \left| \sum_{i=1}^j {X_i\over i} \right| > a  \Big\}  \le  {\sum_{i=1}^\infty \sigma^2_i/i^2 \over a^2} \ee
+or \be P\Big\{ \max_{j\ge 1} \left| \sum_{i=1}^j {X_i\over i} \right| \le a  \Big\}  \ge  1 - {\sum_{i=1}^\infty \sigma^2_i/i^2 \over a^2} \ee
+Because $\max_{j\ge1} \left| \sum{_i=1}^j  X_i/i  \right| \le a$ implies that $\sum_{i=1}^\infty X_i/i \le a \le infty$ we find
+\be P\Big\{ \sum_{i=1}^\infty {X_i\over i}  < \infty  \Big\} \ge  1 - {\sum_{i=1}^\infty \sigma^2_i/i^2 \over a^2} \ee
+By taking $a\to \infty$ we find
+ \be P\Big\{ \sum_{i=1}^\infty {X_i\over i}  < \infty  \Big\}  =  1 \ee and by Kronecker's lemma
+ \be \lim_{\ninfty} P\Big\{ \sum_{i=1}^n {X_i\over i}  = 0  \Big\}  =  1 \qed \ee
+ \end{proof}
+ 
+ If the random variables are assumed not only to be independent but also identically distributed with mean $\mu$ and finite variance $\sigma^2$, then as $\sum{i=1}^\infty \sigma^2/i^2 < \infty$ by assumption, it also follows that wp1, 
+ $$\lim_{\ninfty} \sum_{i=1}^n {(X_i - \mu)\over n} = 0$$ of that 
+ $$\lim_{\ninfty} \sum_{i=1}^n {X_i \over n} = \mu.$$
+
+\subsection{Central Limit Theorem}
+\label{sec:CentralLimit}
+%Central Limit Theorem
+We will follow the method in Ross\footnote{Sheldon Ross, ``A First Course in Probability'', 9th Edition, Pearson Education, Inc., pp. 370-371 (2014).}.
+\begin{theorem}
+\label{thm:CentralLimit}
+Let $X_1, X_2, \hdots$ be a sequence of independent and identically distributed random variables, each having mean $\mu$ and variance $\sigma^2$. The
+distribution of 
+$${X_1 + X_2 + ... + X_n  - n\mu\over\sigma\sqrt{n}}$$ tends to the standard normal as $\ninfty$. For $-\infty < a < \infty$,
+$$ P\Bigg\{ {X_1 + X_2 +\hdots + X_n - n\mu \over \sigma\sqrt{n} } \le a \Bigg\} \rightarrow {1\over \sqrt{2\pi}} \int_{-\infty}^a \exp\left(-{x^2 / 2}\right)\,dx.$$
+\end{theorem}
+We will use the following lemma, which is stated without proof:\\
+\begin{lemma}
+\label{lem:Generating}
+Let $Z_1, Z_2, \hdots$ be a sequence of random variables having distribution functions $F_{Z_n}$ and m.f.g $M_{Z_n}(t) , n\ge 1$, and let $Z$ be a random variable having distribution function $F_Z$ and m.f.g $M_Z(t)$. If 
+$M_{Z_n}(t) \to M_Z(t)$ for all $t$, then $F_{Z_n}(z) \to F_Z(z)$ for all $z$ at which $F_Z(z)$ is continuous. 
+\end{lemma}
+In the case where $F_Z(z)$ is the standard normal random variable, then $M_Z(t) = e^{t^2/2}$. It follows from Lemma \ref{lem:Generating}\ that if 
+$M_{Z_n}(t) \to e^{t^2/2}$ as $\ninfty$, then $F_{Z_n}(z) \to \Phi(z)$ as $\ninfty$ ($\Phi(z)$ is the CDF for the standard normal distribution defined in 
+Eq. [\ref{eqn:Phi}]).
+\begin{proof} (Proof of Theorem \ref{thm:CentralLimit}) Let us first assume that $\mu=0$ and $\sigma = 1$. We also assume that the m.g.f. of the $X_i, M(t)$, exists and is finite. 
+The m.f.g for $X_i/\sqrt{n}$ is given by 
+$$E\Bigg[\exp\Big\{{tX_i\over\sqrt{n}} \Big\} \Bigg] = M\Big({t\over\sqrt{n}} \Big).$$ 
+Then the m.g.f. of $\displaystyle{\sum_{i=1}^n {X_i\over\sqrt{n}}}$ is given by  $\displaystyle{\Bigg[ M\Big({t\over\sqrt{n}} \Big)\Bigg]^n.}$ 
+Now let $L(t) = \log M(t)$ and notice that $M(0) = 1$ and 
+\bearray
+L(0) &=& 0 \\
+L'(0) &=& {M'(0)\over M(0)}\\
+&=& \mu = 0 \\
+L''(0) &=& {M(0) M''(0) - [M'(0)]^2 \over [M(0)]^2}\\
+&=& E[X^2] = 1
+\eearray 
+In order to prove Theorem \ref{thm:CentralLimit}\/ we must show that $[M(t/sqrt{n}) \to e^{t^2/2}$ as $\ninfty$, or that 
+$nL(t/\sqrt{n}) \to t^2/2$ as $\ninfty$. In order to show this, notice that 
+\bearray
+\lim_{\ninfty} {L(t/\sqrt{n})\over n^{-1}} &=& \lim_{\ninfty} { -L'(t/\sqrt{n}) n^{-3/2}t \over -2n^{-2}} \quad \hbox{by L'H\^opital's rule} \\
+&=& \lim_{\ninfty} { -L'(t/\sqrt{n}) t \over -2n^{-1/2}} \\
+&=& \lim_{\ninfty} { -L''(t/\sqrt{n}) n^{-3/2} t^2 \over -2n^{-3/2}}  \quad\hbox{also by L'H\^opital's rule} \\
+&=& \lim_{\ninfty} { L''\big({t\over\sqrt{n}}\big) t^2 \over 2}  \\ 
+&=&  {t^2\over2}
+\eearray
+Therefore the Central Limit Theorem is proven in the case $\mu =0$ and $\sigma=1$. The result can be extended to the more 
+general case of independent identically distributed random variables with non-zero mean and arbitrary variance 
+by transforming $X_i$ to the standard normal variable $X_i^* = (X_i - \mu)/\sigma$ and applying the result obtained above. Since
+$E[X^*_i] = 0, \hbox{Var}[X^*_i] = 1$ we have directly  
+\be {X^*_1 + X^*_2 +\hdots + X^*_n \over \sqrt{n} } =  {X_1 + X_2 +\hdots + X_n - n\mu \over \sigma\sqrt{n} } \label{eqn:ExtendedCentral}\ee
+Since the theorem was proven for
+the expression on the LHS of Eq. [\ref{eqn:ExtendedCentral}], it will also hold for the RHS since these expressions are equivalent. \qed\end{proof}
+
+\subsection{Borel-Cantelli Lemma}
+\label{sec:BorelCantelli}
+%Borel-Cantelli
+
+\begin{lemma}{Borel-Cantelli}\\
+
+Let $A_1, A_2, \hdots $ be random events in a probability space $\Omega$.\\
+
+1) If $\sum_{n=1}^\infty P(A_n) < \infty$, then $P(A_n, \hbox{i.o.}) = 0;$\\
+
+2) If $A_1, A_2, \hdots$ are independent, and $\sum_{n=1}^\infty P(A_n) = \infty$, then $P(A_n, \hbox{i.o.}) = 1$\\
+
+\end{lemma}
+
+\begin{proof}{(Borel-Cantelli {\cal 1})}
+Let $B_k$ be the event $\bigcup\limits_{i=k}^\infty A_i$ for $k=1,2,\hdots$, If $x$ is in the event $\{ A_i, \hbox{i.o.} \}$, then $x\in B_k$ for all $k$, therefore $x\in \bigcup\limits_{k=1}^\infty B_k$.\\
+
+Conversely, if $x\in B_k$ for all $k$, then we can show that $x$ is in $\{A_i, \hbox{i.o.}\}$. This is true because $x\in B_1 = \bigcup\limits_{i=1}^\infty A_i$ means that $x\in A_{j_1}$ for some $j_1$. However, 
+$x\in B_{j_1 + 1}$ implies that $x\in A_{j_1}$ for some $j_2$ that is strictly larger than $j_1$. Therefore we can produce an infinite sequence of integers $j_1 < j_2 < j_3 < \hdots$ such that $x\in A_{j_i}$ for 
+all $i$. Let $E$ be the event $\{ x: x\in A_i, \hbox{i.o.} \}$. By the definition of $\limsup_{\ninfty} A_n$ we have 
+$$E = \bigcap\limits_{n=1}^\infty \, \bigcup\limits_{i=n}^\infty \, A_i $$ From $E\subset B_k$ for all $k$, it follows that $P(E) \le P(B_k)$ for all $k$. By the property of union bound, we have that $P(B_k) \le \sum_{i=k}^\infty P(A_i)$. By hypothesis since $\sum_{i=1}^\infty P(A_i)$ is finite and hence $P(B_k)\rightarrow 0$ as $k\rightarrow\infty$. Therefore $P(E) = 0$.\qed
+\end{proof}
+
+\begin{proof}{(Borel-Cantelli {\cal 2})}
+Let $E$ denote the set of samples that are in $A_i$ infinitely often. We have to show that complement of $E$ (denoted by $E^c$) has probability zero.\\
+
+Taking the complement of $E$ we find using the definition in the proof of Borel-Cantelli 1) and DeMorgan's laws
+$$E^c = \bigcup\limits_{k=1}^\infty \, \bigcap\limits_{i=k}^\infty \, A_i^c $$ But for each $k$, assuming that the $A_i$'s are independent, 
+
+\begin{eqnarray*}
+P\big(\bigcup\limits_{i=k}^\infty A_i^c \big) &=& \prod_{i=k}^\infty P(A_i^c) \\
+&=& \prod_{i=k}^\infty (1 - P(A_i))
+\end{eqnarray*}
+
+The inequality $1 - a \le e^{-a}$ and the assumption that the sum of $P(A_i)$ diverges together imply that
+$$P\big( \bigcup\limits_{i=k}^\infty A_i^c \big) \le \exp\Big( -\sum_{i=k}^\infty P(A_i) \Big)  = 0$$
+Therefore $E^c$ is a union of countable number of events, each of them has probability zero. So $P(E^c) = 0$.\qed
+\end{proof}
+ 
+\subsection{Partitioned Matrices}
+\label{sec:partitioned}
+%Partitioned Matrices
+Consider the matrix given by 
+$$M = \left[
+\begin{array}{c c}
+ A & B \\
+C & D \\
+\end{array}\right],$$
+where $A$ and $D$ are square matrices not necessarily of the same size and $B$ and $C$ are not necessarily square matrices. Assume $A$ and $D$ have inverses $A^{-1}$ and $D^{-1}$ respectively. Multiply the top row by $CA^{-1}$ and subtract that result from the bottom row. The resulting matrix is 
+$$M' = \left[ 
+\begin{array}{cc}
+A & B \\
+0 & D - CA^{-1}B \\
+\end{array}
+\right]$$ Now this type of transformation can be thought of as a particular type of elementary row operation that leaves the determinant of $M$ unchanged: $\det M = \det M'$. Using the notation $|M|$ as a shorthand for $\det M$ we can conclude $$|M| = |A| \cdot | D - CA^{-1}B|.$$ By doing a similar row operation by multiplying the second row by $BD^{-1}$ and subtracting it from the top row we obtain
+$$M'' = \begin{bmatrix} 
+A - BD^{-1}C & 0 \\
+C & D\\
+\end{bmatrix}$$ So we also have that $\det M = \det M''$ and hence $$|M| = |D| \cdot |A - BD^{-1}C|.$$ The above identities are handy in dealing with some of the applications of stochastic processes to the problem of filtering. \\
+
+Let us develop a couple of interesting matrix identities which occur in filters. We will develop these identities by performing the inversion procedure on the matrix $M$ using the following work matrix to keep track of the inversion steps:
+$$\left[
+\begin{array}{c c | cc}
+ A & B & I  & 0 \\
+C & D & 0  & I \\
+\end{array}\right],$$\\
+
+First subtract $CA^{-1}$ times the first row from the second row and multiply the first row by $A^{-1}$. The work matrix becomes:
+$$\left[
+\begin{array}{c c | cc}
+ I & A^{-1} B & A^{-1}  & 0 \\
+0 & D - CA^{-1}B  & -CA^{-1}  & 1 \\
+\end{array}\right],$$\\
+
+Next subtract $A^{-1}B[D-CA^{-1}B]^{-1}$ times the second row from the first row and multiply the second row by $[D-CA^{-1}B]^{-1}$. The work matrix now becomes:
+$$\left[
+\begin{array}{c c | ll}
+ I & 0 & A^{-1} - A^{-1}B[D-CA^{-1}B]^{-1}CA^{-1}  & -A^{-1}B[D-CA^{-1}B]^{-1} \\
+0 & I   & -[D-CA^{-1}B]^{-1}CA^{-1}  & [D-CA^{-1}B]^{-1} \\
+\end{array}\right],$$\\
+
+Now, in order to discover the interesting identities let use an alternative ordering of row operations. In this second case we 
+first subtract $BD^{-1}$ times the second row from the first row and multiply the second row by $D^{-1}$. The work matrix becomes:
+$$\left[
+\begin{array}{c c | cc}
+ A - BD^{-1}C  & 0  & I  & -BD^{-1} \\
+D^{-1}C & I  &  0  & D^{-1} \\
+\end{array}\right],$$\\
+
+Next subtract $D^{-1}C[A-BD^{-1}C]^{-1}$ times the first row from the second row and multiply the first row by $[A-BD^{-1}C]^{-1}$. The work matrix now becomes:
+$$\left[
+\begin{array}{c c | ll}
+ I & 0 & [A-BD^{-1}C]^{-1}  & -[A-BD^{-1}C]^{-1}BD^{-1} \\
+0 & I   & -D^{-1}C[A-BD^{-1}C]^{-1}  & D^{-1}  -D^{-1}C[A-BD^{-1}C]^{-1}BD{-1}  \\
+\end{array}\right],$$
+
+Since these are two ways of obtaining the inverse of $M$, the matrix elements must be equal term-by-term. Hence we obtain some interesting identities. For example: 
+using Partitioned Matrices we have found the Sherman-Morrison-Woodbury formula
+\be [A -BD^{-1}C]^{-1} = A^{-1} - A^{-1}B[D-CA^{-1}B]^{-1}CA^{-1}. \label{eqn:InverseMatrixIdentity}\ee 
+
+%%%%%%%
+Let us apply the ideas of joint random variables, conditional probabillity and expectation to a random $(n+m)$-vector $Z^T = [X^T,Y^T]$, where $X$ is an $n$-vector and $Y$ is an $m$-vector and assume that $Z$ is a multivariate Gaussian $Z \sim N(m_Z, P_{ZZ})$ (with $m_Z = E[Z]$ is a vector of means and $P_{ZZ} = E[(z-m_Z)(z-m_Z)^T]$ is the covariance matrix). This also assumes that $X$ and $Y$ are jointly random Gaussian variables. 
+Then $Z$ has a probability density function given by 
+\begin{equation} f_Z(z) = {1\over \sqrt{(2\pi)^{n+m} |P_{ZZ}|} } \exp\big\{-{1\over2} (z-m_z)^T P_{ZZ}^{-1} (z-m_z) \big\}.\label{eqn:multiGaussian}\end{equation}
+Now we can use the partition matrix approach given in Section [\ref{sec:partitioned}] to write the covariance matrix $P_{ZZ}$ as
+$$P_{ZZ} = E[(z - m_Z)(z-m_Z)^T] = 
+\begin{bmatrix}
+E[(X-m_X)(X-m_X)^T]  & E[(X-m_X)(Y-m_Y)^T] \\
+E[(Y-m_Y)(X-m_Z)^T]  & E[(Y-m_Y)(Y-m_Y)^Y]
+\end{bmatrix}
+=\begin{bmatrix}
+P_{XX}  & P_{XY} \\
+P_{YX} & P_{YY} 
+\end{bmatrix}
+$$
+
+Then we have 
+\begin{theorem}
+\label{thm:jointlyDistributed}
+If the random vectors $X$ and $Y$ are distributed according to Eq. [\ref{eqn:multiGaussian}]\, then $X$ and/or $Y$ is also a multivariate Gaussian (with appropriate parameters). 
+\end{theorem}
+\begin{proof} Let show the theorem holds for $Y$. Accordingly let use consider a transformation of variables to $W^T = [W_1^T, W_2^T]$ such that 
+$$W_1 = X - P_{XY}P_{YY}^{-1} Y, \quad W_2 = Y.$$
+Observe that the Jacobian of the above transformation is $1$.\\
+
+From Theorem [\ref{thm:Gaussian}] $W$ is normally distributed. Let us compute $E[(W_1 - E[W_1])(W_2 - E[W_2])]$,
+\begin{eqnarray*}
+E[W_1] &=& m_X - P_{XY}P_{YY}^{-1}m_Y\\
+W_1 - E[W_1] &=& (X-m_X) - P_{XY}P_{YY}^{-1}(Y-m_Y) \\
+E[W_2] &=& m_Y\\
+W_2 - E[W_2] &=& (Y-m_Y) \\
+\end{eqnarray*} and so
+\begin{eqnarray*}
+E[(W_1 -E[W_1])(W_2 - E[W_2])^T] &=& E [ \big( (X-m_X) - P_{XY}P_{YY}^{-1}(Y-m_Y)\big) \big(Y -m_Y\big)^T] \\
+&=& E[(X-m_X)(Y-m_Y)^T] - E[P_{XY}P_{YY}^{-1}(Y-m_Y)(Y-m_Y)^T]\\
+&=& P_{XY} - P_{XY}P_{YY}^{-1}P_{YY} \\
+&=& P_{XY} - P_{XY} = 0
+\end{eqnarray*} and by symmetry $E[(W_2 -E[W_2])(W_1 - E[W_1])^T] = 0$.\\
+
+Also, 
+\begin{eqnarray*}
+E[(W_1 -E[W_1])(W_1 - E[W_1])^T] &=& E [ \big( (X-m_X) - P_{XY}P_{YY}^{-1}(Y-m_Y)\big) \big( (X-m_X) - P_{XY}P_{YY}^{-1}(Y-m_Y)^T \big)] \\
+&=& E[(X-m_X)(X-m_X)^T] - E[P_{XY} P_{YY}^{-1} (Y-m_Y)(Y-m_Y)^T P_{YY}{-1}^T P_{XY}^T]\\
+&=& P_{XX} - P_{XY}P_{YY}^{-1}P_{YX}
+\end{eqnarray*} 
+
+Therefore
+$$P_{ZZ} = E[(z - m_Z)(z-m_Z)^T] =  
+\begin{bmatrix}
+P_{XX} -P_{XY}P_{YY}^{-1}P_{XY}  & 0 \\
+0 & P_{YY}
+\end{bmatrix}\qed$$\end{proof}
+Therefore we can say that $X$ and $Y$ are marginally Gaussian (with appropriate parameters).\\
+
+It is clear that if two vectors of random variables $X$ and $Y$  are independent, then they are uncorrelated.  An important property of vectors of Gaussian random variables is the converse.
+\begin{theorem}If two jointly distributed Gaussian random vectors are uncorrelated then they are also independent. \end{theorem}
+\begin{proof}
+Let $X$ and $Y$ are random vectors of dimension $n$ and $m$ respectively, that are jointly Gaussian distributed and uncorrelated
+Define $Z$ to be a random vector of dimension $(n+m)$ composed of the components of $X$ and $Y$ as above:
+$$Z^T = [X^T,Y^T], \quad Z = \left[
+\begin{array}{c}
+X \\
+\hline
+Y \\
+\end{array}\right]$$
+Then $Z$ has a mean given by 
+$$m_Z = E[Z] 
+= \left[\begin{array}{c}
+E[X] \\
+\hline
+E[Y] \\
+\end{array}\right]
+= \left[\begin{array}{c}
+m_X \\
+\hline
+m_Y\\
+\end{array}\right]
+$$
+Because $X$ and $Y$ are uncorrelated, then we have 
+$$E[XY^T] = m_Xm_Y^T, \quad E[YX^T] = m_Ym_X^T$$ and the covariance $P_{ZZ}$ becomes
+
+The second moment of $Z$ is given by 
+$$E[ZZ^T] 
+= \left[\begin{array}{c|c}
+E[XX^T] & E[XY^T] \\  
+\hline
+E[YX^T] & E[YY^T]\\
+\end{array}\right], \quad P_{ZZ} = E[ZZ^T] -m_Zm_Z^T  $$
+Therefore the covariance $P_{ZZ}$ becomes block diagonal:
+$$P_{ZZ} = E[ZZ^T] - m_Zm_Z^T 
+= \left[\begin{array}{c|c}
+E[XX^T] & m_Xm_Y^T \\  
+\hline
+m_Ym_X^T & E[YY^T]\\
+\end{array}\right] 
+- \left[\begin{array}{c|c}
+m_Xm_X^T & m_Xm_Y^T \\  
+\hline
+m_Ym_X^T & m_Ym_Y^T\\
+\end{array}\right] 
+= \left[\begin{array}{c|c}
+P_{XX} & 0 \\  
+\hline
+0 & P_{YY}\\
+\end{array}\right] 
+ $$
+ Therefore the determinant of $P_{ZZ}$ is given by the product
+ $$|P_{ZZ}| = |P_{XX}| |P_{YY}|$$
+Let $\xi$ be the vector composed of $n$ $x$-values and $m$ $y$-values 
+$$\xi
+= \left[\begin{array}{c}
+x \\
+\hline
+y \\
+\end{array}\right]$$
+Given the block diagonal structure of $P_{ZZ}$ we can form the quadratic form 
+$[\xi - m_Z]^T P_{ZZ}^{-1} [\xi - m_Z]$ which can be expanded using the vector representation of $\xi$ in terms of $x$ and $y$ values
+
+\begin{eqnarray*}
+[{\bf \xi} - {\bf m_Z}]^T {\bf P^{-1}_{ZZ}}[{\bf \xi} - {\bf m_Z}]  &=& 
+\left[\begin{array}{c}
+x - m_X \\
+\hline
+y-m_Y \\
+\end{array}\right]^T
+\left[\begin{array}{c|c}
+P_{XX}^{-1} & 0 \\  
+\hline
+0 & P_{YY}^{-1}\\
+\end{array}\right] 
+\left[\begin{array}{c}
+x - m_X \\
+\hline
+y-m_Y \\
+\end{array}\right]\\ 
+&=&
+[x - m_X]^T P_{XX}^{-1} [x - m_X] + [y-m_Y]^TP_{YY}^{-1}[y-m_Y]
+\end{eqnarray*}
+Therefore the joint probability distribution can be written as 
+
+\bearray f_Z(\xi)  &=& {1\over(2\pi)^{(n+m)/2}} {1\over|P_{ZZ}|^{1/2}} \exp\big\{ - {1\over2} ({\bf \xi} - {\bf m_Z})^T {\bf P^{-1}_{ZZ}} ({\bf \xi} -{\bf m_Z})\big\} \\
+&=& \left[{1\over(2\pi)^{n/2}} {1\over|P_{XX}|^{1/2}} \exp\big\{ - {1\over2} ({\bf x} - {\bf m_X})^T {\bf P^{-1}_{XX}}  ({\bf x} -{\bf m_X})\big\}\right] \\ 
+&\times& \left[{1\over(2\pi)^{m/2}} {1\over|P_{YY}|^{1/2}} \exp\big\{ - {1\over2} ({\bf y} - {\bf m_Y})^T {\bf P^{-1}_{YY}} ({\bf y} -{\bf m_Y})\big\}\right]
+\eearray
+And so if the Gaussian random vectors $X$ and $Y$ are uncorrelated, then their joint probability density factors into 
+\be f_Z(\xi) = f_X(x) \times f_Y(y) \ee and therefore $X$ and $Y$ are also independent random variables.\qed\end{proof}
+By extension, if $X_1, X_2, \hdots, X_n$ are normally distributed random variables and are pair-wise uncorrelated, then they are independent. 
+%Also, if the Gaussian random vectors $X$ and $Y$ are uncorrelated, then they are independent. 
+
+
+\begin{theorem} Let $X$ and $Y$ be jointly Gaussian distributed as in Eq. [\ref{eqn:multiGaussian}]. Then the conditional probability density of $X$ given $Y$ is normal with mean 
+\be m_X + P_{XY}P_{YY}^{-1}(Y-m_Y) \label{eqn:ConditionalMean}\ee and covariance matrix \be P_{XX} - P_{XY}P_{YY}^{-1}P_{YX}.\label{eqn:ConditionalVariance}\ee 
+\end{theorem}
+\begin{proof}
+We have from Theorem [\ref{thm:jointlyDistributed}] that $W_1$ and $W_2$ are Gaussian and independent. Therefore, their joint density, which is also Gaussian, is the product of their individual probability distributions: 
+\begin{eqnarray*}
+W_1 &\sim& N(m_X - P_{XY}P_{YY}^{-1} m_Y , ~~P_{XX} - P_{XY}P_{YY}^{-1}P_{YX}) \\
+W_2  &\sim& N(m_Y, P_{YY})
+\end{eqnarray*}
+
+Therefore the combined joint probability distribution for $W$ can be written as 
+
+\begin{eqnarray*}
+f_{W_1,W_2}(w_1,w_2) &=& {1\over\sqrt{2\pi)^n |P_{XX} - P_{XY}P_{YY}^{-1}P_{YX} | }} \\ 
+&\null& \exp 
+\big\{ -{1\over2}(w_1 - m_X + P_{XY}P_{YY}^{-1}m_Y)^T(P_{XX} - P_{XY}P_{YY}^{-1}P_{YX})^{-1} \\
+&\null&  (w_1 - m_X + P_{XY}P_{YY}^{-1}m_Y) \big\} \\
+&\null&  {1\over\sqrt{2\pi)^n |P_{YY}|} } \exp\big\{-{1\over2}(w_2 - m_Y)^TP_{YY}^{-1}(w_2 - m_Y)  \big\}
+\end{eqnarray*}
+
+Since the Jacobian of the transformation between $X, Y$ and $W_1, W_2$ is equal to 1, we can recover the density $f_{X,Y}(x,y)$ by eliminating $W_1$ and $W_2$ in terms of $X$ and $Y$. Doing do, we obtain
+\begin{eqnarray*}
+f_{X,Y}(x, y) &=& {1\over\sqrt{2\pi)^n |P_{XX} - P_{XY}P_{YY}^{-1}P_{YX} | }} \\ 
+&\null& \exp 
+\big\{ -{1\over2}[x - m_X  - P_{XY}P_{YY}^{-1}(y - m_Y)]^T(P_{XX} - P_{XY}P_{YY}^{-1}P_{YX})^{-1} \\
+&\null&  [x - m_X -  P_{XY}P_{YY}^{-1}(y - m_Y)] \big\} \\
+&\null&  {1\over\sqrt{2\pi)^n |P_{YY}|} } \exp\big\{-{1\over2}(y - m_Y)^TP_{YY}^{-1}(y - m_Y)  \big\}
+\end{eqnarray*}
+
+Now the right hand side of the above is the marginal probability function of $Y$. So by comparison with Eq. [\ref{eqn:jointConditional}] we see that the conditional density function of $X$ given $Y$ is
+
+\begin{equation}
+\label{eqn:conditionalGaussian}
+\begin{array}{cl}
+f_{X|Y}(x|y) &= {1\over\sqrt{2\pi)^n |P_{XX} - P_{XY}P_{YY}^{-1}P_{YX} | }} \\ \\
+\null & \exp \big\{ -{1\over2}[x - m_X  - P_{XY}P_{YY}^{-1}(y - m_Y)]^T [P_{XX} - P_{XY}P_{YY}^{-1}P_{YX} ]^{-1} \\ \\
+\null & [x - m_X -  P_{XY} P_{YY}^{-1} (y - m_Y) ] \big\} 
+\end{array}
+\end{equation}
+
+Eq. [\ref{eqn:conditionalGaussian}] is important for applications in Filtering theory. 
+
+\end{proof}
+
+%\section{Glossary of Terms}
+%Ergodic\\
+%1) systems such that the {\elevenit time average}\/ equals the {\elevenit assemble average} are called {\elevenit ergodic}. \\
+%2). Markov chains: positive, recurrent, aperiodic states are called {\elevenit ergodic}.\\
+%3). Markov chains: if the limiting probability for finding the system in state $j$ is independent of the initial state $i$, then the state $j$ is called {\elevenit ergodic}.
+%%%%%%%
+

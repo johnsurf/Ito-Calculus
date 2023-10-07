@@ -1,0 +1,128 @@
+\section{Martingales}
+\subsection{Martingales}
+The standard reference on martingales is \cite{Doob}. A stochastic process $\{X(t), t \ge 0\}$ with finite means is said to be a {\elevenit continuous parameter martingale}\/ if for any set of times 
+\be t_1 < t_2 < \hdots < t_n < t_{n+1},\label{eqn:timeSet}\ee 
+\be E[X(t_{n+1}) | X(t_1), \hdots, X(t_n) ] = X(t_n).\ee 
+Therefore the conditional expectation of $X(t_{n+1})$, given the history of values $X(t_1), \hdots, X(t_n)$ is equal to the most recently observed value $X(t_n)$. 
+Consider a stochastic process $\{X(t), t \ge 0\}$ with independent increments and finite means together with the above set of times in Eq. [\ref{eqn:timeSet}]. 
+Note that $$X(t_{n+1}) = X(t_n) + [X(t_{n+1}) - X(t_n)].$$ 
+Because $X(t)$ has independent increments, then $[X(t_{n+1}) - X(t_n)]$  is independent of any elements in the set 
+$\{ X(t_1), \hdots, X(t_n) \}$ because those can be considered boundary points of the respective intervals $[X(t_i) - X(0) ]$ for each $i$ (e.g., assuming $X(0) = 0$). 
+Therefore \be E[ X(t_{n+1}) - X(t_n) | X(t_1), \hdots, X(t_n) ] = E[ X(t_{n+1}) -  X(t_n)]  = m(t_{n+1}) - m(t_n) \ee where $m(t) = E[X(t)] < \infty$ by assumption.  
+Putting these facts together we see that \be E[X(t_{n+1}) | X(t_1), \hdots, X(t_n) ] = X(t_n) + m(t_{n+1}) - m(t_n)\ee 
+If $m(t_{n+1}) = m(t_n)$, then 
+\be E[X(t_{n+1}) | X(t_1), \hdots, X(t_n) ] = X(t_n) \ee  and the stochastic process is a martingale. \\
+
+A stochastic process $\{X_n, n = 1, 2 \hdots, \}$ with finite means is said to be a {\elevenit discrete parameter martingale}\/ if for any integer $n$
+\be E[X_{n+1} | X_1, \hdots, X_n ] = X_n.\ee
+
+Let us consider some example martingales:
+
+\begin{example}{\elevenit Sums of independent, zero mean, random variables}\/
+Consider the consecutive sums of independent random variables with zero mean 
+\be S_n = \sum_{i=1}^n X(t_i),\quad\quad E[X(t_i)] = 0 \ee
+Then $S_n$ is a martingale because
+$S_{n+1} = X_{n+1} + S_n$ and therefore 
+\bearray E[S_{n+1} | S_1, \hdots, S_n ] &=& E[S_{n+1} | X(t_1), \hdots, X(t_n) ] = E[X(t_{n+1}) + S_n | X(t_1), \hdots, X(t_n)] \\
+&=&E[X(t_{n+1}) | X(t_1), \hdots, X(t_n)] + E[S_n | X(t_1), \hdots, X(t_n)]\\ 
+&=&  E[X(t_{n+1})] + E[S_n | X(t_1), \hdots, X(t_n)]  = 0 + S_n \\
+&=& S_n 
+\eearray since $S_n$ is fixed if $X(t_1), \hdots, X(t_{n+1})$ are given.\demo\end{example}
+
+\begin{example}{$Y_n = (S^2_n - \sigma^2n)$ \elevenit is a martingale.}
+Consider again the sums of independent, zero mean random variables with $E[X^2_i] = \sigma^2$ and square the sums and form the difference  $S^2_n - \sigma^2n $. Then take the conditional expectation to obtain
+\bearray
+ E[ (S^2_n - \sigma^2 n) | X_1, \hdots, X_{n-1}] &=& E[ (S_{n-1} + X_n)^2 - \sigma^2 n | X_1, \hdots X_{n-1}] \\
+ &=& E[S^2_{n-1} | X_1, \hdots X_{n-1}] + E[X^2_n | X_1, \hdots X_{n-1}] + 2E[X_n]E[S_{n-1} | X_1, \hdots, X_{n-1}] - \sigma^2 n  \\
+ &=& S^2_{n-1} + E[X^2_n] - \sigma^2 n  \\
+ &=& S^2_{n-1} + \sigma^2 - \sigma^2 n  \\
+ &=& S^2_{n-1} - \sigma^2(n - 1) \eearray
+Since $Y_{i}$ is determined completely by $X_1, \hdots, X_{i},\quad i = 1, 2, \hdots, n-1$, we have by the above that 
+$$E[Y_n | Y_1, \hdots Y_{n-1} ] = Y_{n-1}$$ and therefore $Y_n = (S^2_n - \sigma^2 n)$ is a martingale.\demo\end{example}
+
+One can also conclude that the unconditional expectations will form a chain such that 
+$$ E[S^2_n - \sigma^2n] = E[S^2_{n-1} - \sigma^2(n-1)] = \hdots = E[S^1 - \sigma^2] = E[X^2_1] - 1 = 0 $$ and therefore that
+\be E[S^2_n] = \sigma^2 n. \ee
+
+\begin{example}{\elevenit Brownian motion is a martingale} For $s<t$ we have
+\bearray E[B(t) | B(s) ] &=& E[B(t) - B(s) + B(s) | B(s) ] \\
+&=& E[B(t) - B(s) | B(s)] + E[B(s)|B(s)] \\
+&=& 0 + B(s) \quad\hbox{by independent increments} \\
+&=& B(s) 
+\eearray Therefore Brownian motion satisfies the martingale condition $E[B(t) | B(s) ] = B(s)$ for $s < t$.\demo\end{example}
+Let us compute the conditional expectation for exponentiated Brownian motion.
+Assuming $s <  t$
+\bearray
+ E\big[\exp[\theta B(t) ] | B(s)\big]  &=& E[\exp\big(\theta[B(t) - B(s)] + \theta B(s) \big) | B(s)] \\
+&=& \exp[\theta B(s)] E[\exp\big(\theta[ B(t) - B(s)] \big)] 
+\eearray by independent increments. Since $B(t) - B(s)$ is normally distributed with mean $0$ and variance $\sigma^2 (t-s)$ we can make use of the m.g.f. for the normal distribution to compute 
+\be E\big[\exp\big(\theta[ B(t) - B(s)] \big)\big] = \exp[\theta^2 \sigma^2 (t-s)/2] \ee and arrive at
+\be  E\big[e^{\theta B(t)} | B(s)\big]  = e^{\theta B(s) + {1\over2}\theta^2\sigma^2(t-s)} \label{eqn:expBrownian}\ee
+So, there is an extra term on the RHS of Eq. [\ref{eqn:expBrownian}] which means that $\exp[\theta B(t)]$ is not a martingale. However, as this can be rectified as shown in the following. 
+ 
+\begin{example}{\elevenit Exponentiated Brownian Motion Martingale}
+Define a stochastic process $$X(t,\theta) = e^{\theta B(t) - {1\over2}\theta^2 \sigma^2 t}$$
+In this case $X(t,\theta)$ will be a martingale because
+\bearray
+ E[X(t,\theta) | X(s,\theta)] &=& E[X(t,\theta) | B(s), \sigma^2(t-s) ] \\
+&=&  e^{\theta B(s) + {1\over2}\theta^2\sigma^2 (t-s) - {1\over2}\theta^2\sigma^2 t } \\
+&=&   e^{\theta B(s) - {1\over2}\theta^2\sigma^2 s} \\
+&=& X(s,\theta)
+\eearray \demo\end{example}
+The above martingale has the interesting property that it can be used to {\elevenit generate}\/ more martingales by differentiating $X(t,\theta)$ with respect to $\theta$ and setting $\theta = 0$. In other words, there is a whole series of martingales which are related to Brownian motion by using $X(t,\theta) = e^{\theta B(t) - {1\over2}\theta^2 \sigma^2 t}$ as a generating function. \\
+
+Suppose we are observing a 1-dimensional Brownian motion, $B(t)$ that begins at $B(0) = 0$. Given two real numbers $a$ and $b$ we ask what is the probability, $p$, that
+the Brownian motion hits $b$ before it hits $-a$? ( $b$ is to the right of 0 and $-a$ is to the left). Let $T$ be the time to hit $b$ or $-a$ whichever is first. $T$ is an example of 
+a {\elevenit stopping time}. One needs to show that $T$ is finite -- in other words, it must be shown that the Brownian motion process does not stay between $-a$ and $b$ forever. We assume that this is true and that the Brownian motion eventually hits $-a$ or $b$.
+The probability $p$ is given by 
+\be p = P[\hbox{hit $+b$ before $-a$}] = P[B(T) = b] \ee  
+Solution: $B(t)$ is a martingale. Therefore
+$E[B(t) | B(s) ] =  B(s)$ in general and for $t = T$ we have 
+$$ E[B(T) | B(0) ] = B(0) = 0 $$
+Now since $B(T) = b$ with probability $p$, then $B(T) = -a$ with probability $1-p$ and so 
+\be E[B(T) | B(0) ] = bp + (-a)(1-p) = B(0) = 0 \ee or
+\bearray
+ 0 &=&  bp -a + ap\\
+a  &=& p(a+b) \\
+p &=& {a\over a + b}
+\eearray 
+Therefore the probability that the Brownian motion will first hit $b$ is $a/(a+b)$. \\
+
+Let us further seek to find the expected time $E[T]$ when the Brownian motion will first encounter either $b$ or $-a$. Now Brownian motion satisfies
+$E[B^2(t)] = \sigma^2 t$ and therefore $E[B^2(t) | t = T] = \sigma^2T$ and so \be E\big[E[B^2(t) | t = T] \big] = \sigma^2E[T] \ee
+
+Now, based on the probabilities we found above, we have
+\be B^2(T) = \Bigg\{ 
+\begin{array}{rcl}
+b^2 & \hbox{probability} & p \\
+(-a)^2 & \hbox{probability}  & 1-p
+\end{array}
+\ee  
+
+Putting everything together we find
+\bearray
+\sigma^2E[T] &=& E[B^2(T)] \\
+&=& b^2p + a^2(1-p) \quad \hbox{and we have that $p = a/(a+b)$}\\
+&=& b^2{a\over a+b} + a^2{b\over a+b}\\
+&=& ab{a+b\over a+b} \\
+&=& ab
+\eearray
+In summary,  the probability that B(t) hits $b$ before $-a$ is $p=a/(a+b)$ and the expected time to hit is $E[T] = ab/\sigma^2$. 
+
+\subsection{Sub-and-super martingales}
+A {\elevenit submartingale} is a stochastic process that satisfies the following inequality
+\be E[X_k | X_1, \hdots, X_{k-1}] \ge X_{k-1} \ee
+
+A {\elevenit supermartingale} is a stochastic process that satisfies the following inequality
+\be E[X_k | X_1, \hdots, X_{k-1}] \le X_{k-1} \ee
+
+\begin{example}
+Consider again the squares of sums $S^2_k$ above. 
+\bearray 
+E[ S^2_k | X_1, \hdots, X_{k-1} ] &=& E[ (X_k + S_{k-1})^2 | X_1, \hdots, X_{k-1}]\\
+&=& E[X_k^2 | X_1, \hdots, X_{k-1}] + E[S^2_{k-1} | X_1, \hdots, X_{k-1}] + 2E[X_k] E[S_{k-1} | X_1, \hdots, X_{k-1}]\\
+&\ge& E[S^2_{k-1} | X_1, \hdots, X_{k-1}]  = S^2_{k-1}
+\eearray because $E[X_k] = 0.$Therefore $S^2_k$ is a submartingale because $E[S^2_{k} | X_1, \hdots, X_{k-1}] \ge S^2_{k-1}$.\demo\end{example}
+
+
+%Future plans include Wiener Filters, Kalman-Bucy Filters and Stochastic Differential Equations. 

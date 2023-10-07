@@ -1,0 +1,28 @@
+\section{Probability Spaces \& Random Variables}
+\label{sec:Probability}
+Let us summarize some of the basic concepts in probability theory. \\
+ 
+The sample space $\Omega$ consists of the set of all elementary outcomes of an experiment. The family of sets $\cal{F}$ (called a ``$\sigma$-algebra'') on $\Omega$ form a measurable space 
+$(\Omega,{\cal F})$. The $\sigma$-algebra is a family of subsets of all the possible subsets of $\Omega$ such that a probability function can be defined on the members of the family (which is, in general, an impossible task for all the possible subsets of $\Omega$). The family, ${\cal F}$, consists of sets with the following properties:\\
+
+(i) $\emptyset \in {\cal F}$\\
+(ii) $F\in \cal{F} \implies F^C \in {\cal F}$, where $F^C = \Omega \backslash F$ is the complement of $F$ in $\Omega$\\
+(iii) $A_1, A_2, ... \in {\cal F} \implies A := \bigcup\limits_{i=1}^{\infty} \, A_i \in \cal{F}$ \\ 
+
+{\elevenit Point functions}\/ like $f: A \to B$ map the set $A$ into the set $B$. The domain of $f$ consists points in $A$ and the range is the set $\{f(x) | x \in A \}$. We think of $f(x)$ as the {\elevenit image}\/ of the point $x$. Probability, on the other hand, is a {\elevenit set function}\/ whose domain consists of sets. In other words, probability is a function that assigns a number between $0$ and $1$ to a set $A$, i.e., the probability of $A$ occurring is given by the function $P(A)$.\\
+
+Probability is a {\elevenit continuous set function}, $P(A),$ defined on the space $(\Omega,{\cal F})$ containing subsets $A  \subset \Omega$. It is sometimes called a probability measure and is an example of a measure. The mathematical concept of measure is analogous to determining the size of set. For finite sets one could use a function that counted the number of entries in a set to determine the ``size''.
+ A probability measure on a measurable space $(\Omega, {\cal F})$ is a function $P: {\cal F} \rightarrow [0,1]$ such that \\
+
+(Axiom 1) if $A \in {\cal F}$, then $0\le P(A) \le 1$ (as defined above).\\ \\
+(Axiom 2) $P(\emptyset) = 0, P(\Omega) = 1$\\ \\
+(Axiom 3) {\elevenit Countable Additivity:}\/ if $A_1, A_2, ... \in {\cal F}$ and $\{A_i\}_{i=1}^{\infty}$ is disjoint (i.e., $A_i\cap A_j = \emptyset$ if $i \ne j$), then\\
+$$ P\Big( \bigcup\limits_{i=1}^{\infty}\, A_i \Big) = \sum_{i=1}^{\infty} \, P(A_i)$$
+
+The triple $(\Omega, {\cal F}, P)$ is called a probabilty space. \\
+
+Using these concepts we can develop the idea of a ``random variable'' in terms of a function of the elementary outcomes $\omega \in \Omega$. A scalar random variable $x(\cdot)$ is a real-valued point function which assigns a real scalar value to each point $\omega$ in the sample space $\Omega$, denoted as $x(\omega) = x$, such that every set $A \subset \Omega$ of the form $$ A = \{ \omega: x(\omega) \le \xi\}$$ for any value $\xi$ on the real line $(\xi \in \mathbb{R})$, is an element of the $\sigma$-algebra $\cal F$ (i.e., $A \in {\cal F}$) and therefore lies in the domain of the probability function.
+ The name ``random variable'' is perhaps unfortunate in that it does not seem to imply the fact that we are talking about a function, as opposed to values the function can assume. In fact, $x(\cdot)$ is a function, or mapping, from $\Omega$ into $\mathbb{R}$.\\
+
+A vector random variable or random vector ${\bf x}(\cdot)$ is just the generalization of the random variable concept to the multidimensional (vector) case: a real-valued point function which assigns a real vector to each point $\omega$ in $\Omega$, denoted as ${\bf x}(\omega)$, such that every set $A$ of the form $$A = \{\omega: {\bf x}(\omega) \le \xi\}$$ for any $\xi \in \mathbb{R}^n$, is an element of $\cal F$.
+

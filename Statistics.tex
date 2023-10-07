@@ -1,0 +1,29 @@
+\section{Statistics}
+
+The main random variable we will concern ourselves with is the Gaussian or normal random variable with mean $\mu$ and variance $\sigma^2$, denoted by $N(\mu, \sigma^2)$. 
+The Standard Normal Distribution has parameters $\mu =0$ and $\sigma = 1$ and is denoted by $N(0,1)$. If $X$ is a normal random variable distributed according to $N(\mu,\sigma^2)$ we write 
+$X \sim N(\mu, \sigma^2)$
+The Gaussian random variable is continuous and can take on any value in the real number line. The probability distribution function for a $X \sim N(\mu,\sigma^2)$ random variable is given by 
+$$f_X(x) = {1\over \sqrt{2\pi}\sigma}\, e^{-(x-\mu)^2/2\sigma^2} \quad\quad -\infty < x < \infty$$
+The probability for $X$ to take on values in a subset $B \subset R$ is given by $$P\{X \in B\} = \int_{x \in B}\, f_X(x)\, dx.$$
+
+The probability density function is normalized to unity. Using the change-of-variable $u = (x-\mu)/\sigma$: 
+\begin{equation}
+\int_{-\infty}^{\infty} \, f_X(x) dx = {1\over \sqrt{2\pi}} \int_{-\infty}^{\infty}\, e^{-u^2/2}\, du = 1
+\label{eqn:gaussnormalization} \end{equation}\\
+
+If $X \sim N(\mu, \sigma^2)$, then $Z = \alpha X + \beta$ will be distributed according to $Z \sim N(\alpha\mu + \beta, \alpha^2\sigma^2)$: 
+\begin{proof}
+\begin{eqnarray*}\large
+F_Z(a)    &=& P(Z\le a)\\
+               &=& P(\alpha X + \beta \le a) \\
+               &=& P\left(X \le {a - \beta\over \alpha}\right) \\
+               &=& F_X\left({a - \beta\over \alpha}\right) \\ \\
+               &=& {1\over \sqrt{2\pi}\sigma} \int_{-\infty}^{\left({a-\beta\over \alpha}\right)} \, e^{-(x-\mu)^2/2\sigma^2}\, dx\\ \\
+               &=& {1\over \sqrt{2\pi}} \int_{-\infty}^{a}\, e^{-{ [z - (\alpha\mu + \beta) ]^2\over2\alpha^2\sigma^2} } \, dz
+\end{eqnarray*}
+As shown above, $Z \sim N(\alpha\mu + \beta, \alpha^2\sigma^2)$.\qed
+\end{proof}
+
+The CDF for the standard normal random variable is $\Phi(a)$ and is given by 
+\be \Phi(a) = {1\over \sqrt{2\pi}} \int_{-\infty}^{a}\, e^{-{ z^2/2} } \, dz \label{eqn:Phi}\ee

@@ -1,0 +1,132 @@
+\section{Probability as a Sequentially Continuous Set Function}
+\label{sec:Continuous}
+\subsection{Sequential Continuity}
+
+\begin{definition}
+In ordinary calculus a sequence $x_1, \hdots, x_n \hdots$ {\elevenit converges to a limit L}\/ iff for every $\epsilon > 0$ there is a positive integer $N$ such that 
+\[ | x_n - L | < \epsilon\hbox{~whenever $n>N$. We also write this as $x_n \to L$ as $\ninfty$.} \]
+\end{definition}
+
+\begin{definition}
+An infinite sequence $\{ x_n \}$ is called a {\elevenit Cauchy sequence}\/ iff for each $\epsilon > 0$, there is a positive integer $N$ such that 
+\be  | x_n - x_m |< \epsilon\quad \hbox{for all $m>N$ and $n>N$.} \ee
+\end{definition} 
+
+\begin{theorem}
+(Cauchy convergence criterion). A necessary and sufficient condition for convergence of a sequence $\{ x_n\}$ is that it be a Cauchy sequence.
+\end{theorem}
+
+\begin{proof}
+See any book on real analysis such as \cite{Protter}.\qed
+\end{proof}
+
+The Cauchy convergence criterion provides a means of establishing the convergence of a sequence to a limit without knowing the limit itself.\\
+
+The idea of a continuous function in ordinary analysis is given by the following
+\begin{definition}
+Suppose that $D$ is a subset of $\mathbb{R}$ and $f: D \to \mathbb{R}$. The function $f$ is continuous at $a$ iff (1) the point $a$ is in in an open interval $I \subset D$, and (2) there is a positive number $\delta$ such that \[ | f(x) - f(a) | < \epsilon\quad\hbox{whenever $|x-a| < \delta$.} \]
+\end{definition}
+
+The above definition can be extended to functions which act on subsets of a metric space $S$, e.g., $S = \mathbb{R}^n$. In that case continuity of a function $f$ is defined as
+\begin{definition}
+Let $A$ be a subset of a metric space $S$, and suppose $f: A\to \mathbb{R}$. Let $p_0 \in A$. We say that $f$ is {\elevenit continuous with respect to $A$ at $p_0$}\/ iff (1) $f(p_0)$ is defined, and  (2) either
+$p_0$ is an isolated point of $A$ or $p_0$ is a limit point of $A$ and 
+\[ f(p) \to f(p_0)\quad \hbox{as $p \to p_0$,\quad $p\in A$.}   \] 
+We say that {\elevenit f is continuous on A} iff $f$ is continuous with respect to $A$ at every point of $A$.
+\end{definition}
+The above ideas and definitions are basic to real analysis and can be found in \cite{Protter}.\\
+
+The concept of continuity can be extended to the probability function which is defined on the sets of the $\sigma$-algebra.\\
+
+We begin by considering {\elevenit increasing}\/ and {\elevenit decreasing}\/ sequences of sets in the $\sigma$-algebra and show how to define the probability for limits of such sequences.\\
+
+A sequence of events $\{A_n, n\ge 1\}$ is said to be an {\elevenit increasing sequence}\/ if
+$$A_1 \subset A_2 \subset \hdots \subset A_n \subset A_{n+1} \subset \hdots$$
+A sequence of events $\{A_n, n\ge 1\}$ is said to be a {\elevenit decreasing sequence} if
+$$A_1 \supset A_2 \supset \hdots \supset A_n \supset A_{n+1} \supset \hdots$$
+If $\{ A_n, n\ge 1\}$ is an increasing sequence of events, then it is possible to define an event representing the limit by 
+$\displaystyle{\lim_{\ninfty} A_n}$ as $$\lim_{\ninfty}\, A_n = \bigcup\limits_{i=1}^\infty\, A_i$$ Similarly if $\{ A_n, n\ge1\}$ is a decreasing sequence of events, 
+we define $\displaystyle{\lim_{\ninfty}\, A_n}$ by $$\lim_{\ninfty}\, A_n = \bigcap\limits_{i=1}^\infty\, A_i$$
+
+\begin{proposition}
+If $\{A_n,n\ge 1\}$ is either an increasing or decreasing sequence of events, then $$\lim_{\ninfty} \, P(A_n) = P(\lim_{\ninfty}\, A_n)$$
+\label{eqn:setlimits}
+\end{proposition}
+
+Suppose that $\{A_n,n\ge 1\}$ is an increasing sequence of events and define new events $C_n, n\ge1$ by
+\begin{eqnarray*}
+C_1 &=& A_1 \\
+C_n &=&  A_n \cap \big(\bigcup\limits_{i=1}^{n-1}\, A_i \big)^c = A_n \cap C^c_{n-1}\quad\quad n > 1 \\ 
+\end{eqnarray*}where $C_i^c$ is the set complement of $C_i$ and also $\bigcup\limits_{i=1}^{n-1}\, C_i = C_{n-1}$, since $C_i$ is an increasing sequence of events. So $C_n$ consists of the points in $A_n$ which are not in any of the previous $A_i, i<n$.  Now the $C_i$ are mutually exclusive sets and also 
+$$\bigcup\limits_{i=1}^\infty\, C_i = \bigcup\limits_{i=1}^\infty\, A_i\quad\quad\hbox{and}\quad \bigcup\limits_{i=1}^n\, C_i = \bigcup\limits_{i=1}^n\, A_i\quad\quad n>1$$ We have the following sequential continuity property:
+$\displaystyle{P\left( \lim_{\ninfty} A_n\right) =  \lim_{\ninfty}\, P(A_n)}$.
+\begin{eqnarray*}
+P\big( \lim_{\ninfty} A_n \big) &=& P\big(\bigcup\limits_{i=1}^\infty\, A_i \big) \quad\quad\hbox{~~~$A_n$ is a nested increasing sequence}\\
+&=& P\big(\bigcup\limits_{i=1}^\infty\, C_i \big) \quad \quad ~~[\displaystyle{\bigcup\limits_{i=1}^n\, A_i = \bigcup\limits_{i=1}^n\, C_i}\quad\hbox{for all $n$ (including $n=\infty$)}]\\
+&=& \sum_{i=1}^\infty\, P(C_i)\quad\quad\hbox{~~~Axiom 3 (Countable Additivity)} \\
+&=& \lim_{\ninfty} \sum_{i=1}^n\,P(C_i) \quad \hbox{~definition}\\
+&=& \lim_{\ninfty}\, P\big(\bigcup\limits_{i=1}^n\, C_i \big)\hbox{~~~Axiom 3 (Countable Additivity)}\\
+&=& \lim_{\ninfty}\, P\big(\bigcup\limits_{i=1}^n\, A_i \big)\quad [\bigcup\limits_{i=1}^n\, A_i = \bigcup\limits_{i=1}^n\, C_i\quad\hbox{for all $n$ (including $n=\infty$)}]\\\
+&=& \lim_{\ninfty}\, P(A_n) \quad\quad\hbox{~~~$A_n$ is a nested increasing sequence}
+\end{eqnarray*} for increasing sequences $\{ A_n, n\ge1 \}$. \\
+
+If $\{A_n, n\ge 1 \}$ is a decreasing sequence, then $\{ A_n^c, n\ge 1\}$ is an increasing sequence and we can use the previous results 
+$$P\Big(\bigcup\limits_{i=1}^\infty\, A_i^c   \Big)  = \lim_{\ninfty}\, P(A_n^c)$$ But since $\bigcup\limits_{i=1}^n\, A_i^c = \big(\bigcap\limits_{i=1}^\infty \big)^c$ using DeMorgan's laws (see the Appendix [\ref{sec:DeMorgan}]), we find
+$$P\Big[ \Big( \bigcap\limits_{i=1}^\infty\, A_i  \Big)^c  \Big] = \lim_{\ninfty}\, P(A_n^c)$$ Since $P(A^c) = 1 - P(A)$ we can write the previous relation as 
+
+$$1- P\Big( \bigcap\limits_{i=1}^\infty\, A_i  \Big) = \lim_{\ninfty} [1 - P(A_n)] = 1 - \lim_{\ninfty}\, P(A_n)$$ or 
+$$P\Big( \bigcap\limits_{i=1}^\infty\, A_i  \Big) = \lim_{\ninfty}\, P(A_n).$$
+
+We can define limits for general sequences of events $\{A_n, n\ge 1\}$ which are not necessarily nest as in the above examples. Let $A_1, A_2, \hdots$ be a sequence of arbitrary events. Construct the events
+\begin{eqnarray*}
+B_n &\equiv& \bigcup\limits_{i=n}^\infty A_i, \quad\quad\hbox{$B_n$ is a nested decreasing sequence of events, and}\\
+C_n &\equiv& \bigcap\limits_{i=n}^\infty A_i, \quad\quad\hbox{$C_n$ is a nested increasing sequence of events.}
+\end{eqnarray*}
+
+Notice that $$C_n \equiv \bigcap\limits_{i=n}^\infty A_i \subset A_n \subset \bigcup\limits_{i=n}^\infty A_i \equiv B_n$$for all $n$. $B_n$ and $C_n$ are legitimate events because countable intersections and unions of events are always events belonging to the $\sigma$-algebra. Now $B_n$ is nested decreasing and $C_n$ is nested increasing and we can use the results above to describe their limits. 
+
+For example, consider the new events denoted by $\displaystyle{\limsup_{\ninfty}\, A_n}$ and $\displaystyle{\liminf_{\ninfty}\, A_n}$ as follows
+$$\begin{array}{rcl}
+B &= \displaystyle{\limsup_{\ninfty}\, A_n} &= \bigcap\limits_{n=1}^\infty \, B_n \\ \\
+C &= \displaystyle{\liminf_{\ninfty}\, A_n} &= \bigcup\limits_{n=1}^\infty \, C_n\\
+\end{array}$$ 
+$\displaystyle{\limsup_{\ninfty}\, A_n}$ is the intersection of the events $\bigcup\limits_{i=n}^\infty\, A_i$ and it follows that a point $x\in B$ if, for all $n$, it is contained in at least one of the events $A_i$ for $i\ge n$. But this is equivalent to $x$ being contained in an infinite number of the events $A_n, n\ge1$. Therefore $\displaystyle{\limsup_{\ninfty}\, A_n}$ consists of all $x$ that are contained in an infinite number of the events $A_n, n\ge 1$, or that $x$ occurs {\elevenit infinitely often} (i.o.).\\
+
+On the other hand a point $x\in C$ if, for some $n$, $x$ is contained in $\bigcap\limits_{i=n}^\infty\,A_i$. Therefore for some $n, x \in A_i$ for all $i\ge n$.. But this is equivalent to $x$ being contained in all but a finite number of the events $A_n, n\ge1$.\\
+
+\begin{definition}
+If $\displaystyle{\limsup_{\ninfty} \, A_n  = \liminf_{\ninfty}\, A_n}$ then we say that the $\displaystyle{\lim_{\ninfty}\, A_n}$ exists and is equal to the common limit:
+$$ \lim_{\ninfty}\, A_n = \limsup_{\ninfty} \, A_n  = \liminf_{\ninfty}\, A_n.$$ 
+\end{definition}
+
+In this case we have: 
+\begin{theorem} For any sequence of events $\{ A_n, n\le 1\}$ for which $\displaystyle{\lim_{\ninfty}\, A_n}$ exists, 
+$$P\big(\lim_{\ninfty}\, A_n \big) = \lim_{\ninfty}\, P(A_n)$$
+\end{theorem}
+
+\begin{proof}
+Since $\Big\{\bigcup\limits_{i=n}^\infty A_i, n\ge1\Big\}$ is a decreasing sequence of events, it follows from Proposition [\ref{eqn:setlimits}]  that
+$$P\Big( \limsup_{\ninfty} A_n  \Big)  = \lim_{\ninfty}\, P\Big( \bigcup\limits_{i=n}^\infty A_i \Big)$$  and, because $A_n \subset \bigcup\limits_{1=n}^\infty A_i$ then $P(A_n) \le P\big( \bigcup\limits_{i=n}^\infty A_i \big)$ and therefore
+$$\lim_{\ninfty} P\Big( \bigcup\limits_{i=n}^\infty\, A_i \Big) \ge \overline{\lim}_{\ninfty} P(A_n)$$ (where for any sequence of real numbers $\displaystyle{b_n, n\ge 1, \overline{\lim}_n\, b_n}$ is defined to equal the largest limit point of the set $\{b_n, n\ge1  \}$. In addition, $\displaystyle{\underline{\lim}_n  b_n}$ is defined to equal the smallest limit point. We say that $\displaystyle{\lim_{\ninfty} b_n}$ exists if $\displaystyle{\overline{\lim}_{\ninfty} b_n = \underline{\lim}_n b_n}$). Therefore $$\displaystyle{P\Big(\limsup_{\ninfty} A_n   \Big) \ge \overline{\lim}_n P(A_n)}$$\\
+
+Similarly, since $\Big\{\bigcap\limits_{i=n}^\infty A_i, n\ge1\Big\}$ is an increasing sequence of events, it follows from Proposition \ref{eqn:setlimits}\ that 
+\begin{eqnarray*}
+ P\Big( \liminf_{\ninfty} A_n  \Big)  &=& P\Big(\bigcup\limits_{n=1}^\infty \bigcap\limits_{i=n}^\infty A_i \Big)\\
+ &=& \lim_{\ninfty} P\Big(\bigcap\limits_{i=n}^\infty A_i   \Big)\\
+ &\le& \underline{\lim}_n P(A_n)
+\end{eqnarray*}
+where the last inequality follows because $\bigcap\limits_{i=n}^\infty A_i \subset A_n$. Therefore if $\displaystyle{\lim_{\ninfty}\, A_n}$ exists, then we have
+$$\displaystyle{\overline{\lim}_n P(A_n) \le P(\limsup_{\ninfty}\, A_n) = P(\lim_{\ninfty}\, A_n) = P(\liminf_{\ninfty}\, A_n) \le \underline{\lim}_n\, P(A_n)}$$
+which, since $\displaystyle{\overline{\lim}_n\, P(A_n) \ge \underline{\lim}_{\ninfty}\, P(A_n)}$ gives
+$$P\Big(\lim_{\ninfty}\, A_n  \Big) = \overline{\lim_{\ninfty}} P(A_n) = \underline{\lim_{\ninfty}}\, P(A_n)\quad\qed$$
+\end{proof}
+
+\subsection{Distribution Functions}
+
+In dealing with specific random variables which can take on continuous values we will find it useful to express the probability that a random variable takes on any value less than a specified number. We define the Cumulative Distribution Function  (CDF) as follows
+$$F_X(x) = P\{x(\omega) \le x\} $$ Then the probability that $x < x(\omega) \le x + \Delta x$ can be expressed in terms of the  CDF as
+$$P\{ x < x(\omega) \le x + \Delta x \} = F_X(x + \Delta x) - F_X(x) \approx {dF_X(x)\over dx} \cdot \Delta x = f_X(x) \Delta x $$where $f_X(x) = {dF_X(x) \over dx}$
+(assuming the derivative of $F_X(x)$ exists). In differential form we can write \be dF_X(x) = f_X(x)\, dx. \ee $f_X(x)$ is called the Probability Density Function (PDF) and can be used to calculate the probability that $x$ is the infinitesmal range
+$$P\{x < x(\omega) \le x + \Delta x \} \approx {dF_X(x)\over dx} \Delta x = f_X(x) \Delta x.$$ 
+This computation can be extended to any finite range $(x_1 < x \le x_2)$ accordingly by integration
+$$P\{x_1 < x(\omega) \le x_2\} = \int_{x_1}^{x_2} dF_X(x) = \int_{x_1}^{x_2} f_X(x) dx.$$

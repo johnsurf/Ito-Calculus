@@ -1,0 +1,253 @@
+\section{Mean-Square Calculus}
+\label{sec:MeanSquareCalculus}
+ 
+ Please see \cite{Stensby} and \cite{Jazwinski} for a general description of mean-square Calculus. \\
+ 
+ As mentioned in Section [\ref{sec:Probability}], mean-square (m.s.) calculus is used simplify many of the derivations but still keep the subject general enough to describe a large body of the interesting subjects in stochastic processes. The main cornerstones on which mean-square calculus stands are the ideas of {\elevenit mean-square limit, mean-square continuity, mean-square differentiability, and mean-square integrability.} The concept of mean-square convergence appears in many other areas such as the inner product spaces (Hilbert space) of Quantum Mechanics.\\ 
+ 
+Earlier we defined the correlation function for a stochastic process by $\Gamma(t_1, t_2) = E[X(t_1) X(t_2)] $ The correlation function can also be thought of as a kind of inner product 
+$$\langle X(t_1), Y(t_2) \rangle = E[X(t_1) X(t_2)]$$
+
+The inner product exists as a real number for every $X(t_1)$ and $Y(t_2)$ which have finite average power and satisfies the following rules:\\
+
+1.) $\langle X(t_1), X(t_1) \rangle \ge 0$ and $\langle X(t_1), X(t_2) \rangle = 0$ iff $X(t) = 0$ almost surely (i.e., $P[X(t) = 0] = 1$),\\ 
+2.) $\langle X(t_1), Y(t_2) \rangle = \langle Y(t_2), X(t_1) \rangle $,\\ 
+3.) $\langle c X(t_1), Y(t_2) \rangle = c \langle X(t_1), Y(t_2) \rangle$, where $c \in \mathbb{R}$.\\
+
+The equivalence of $\langle X(t), X(t) \rangle = 0$ and $X(t) = 0$ identically is a general requirement of an inner product, but this is not true in the above case since we only have $X(t) = 0$ almost surely (wp1). There are ways around this subtle point. For example we can use $\langle , \rangle = 0$ to define an equivalence relation (see Section [\ref{sec:equivalence}]) between $X(t)$ and $Y(t)$ and say that $X R Y$ if $\langle X(t) - Y(t) , X(t) - Y(t) \rangle = 0$ and then take the continuous version from this equivalence class as the representative version (assuming it exists). With this understanding we define the {\elevenit vector norm} of a vector-valued process similarly:
+$$\| X(t) \| = \sqrt{\langle X(t), X(t) \rangle}$$
+
+This vector norm satisfies:\\
+
+1.) $\| X(t) |\ \ge 0$ and $\| X(t) \|= 0$ iff $X(t) = 0$ almost surely (i.e., $P[X(t) = 0] = 1$),\\ 
+2.) $\| c X(t) \| = c \| X(t) \| $, where $c \in \mathbb{R}$.\\
+3.) $\|  X(t) +Y(t) \|  \le \| X(t) \| + \| Y(t) \|$ \quad \hbox{(the triangle inequality)}. \\ 
+ 
+ If $E[X(t)] = 0$, then $\| X(t) \|$ is the standard deviation of $X(t)$.\\
+
+We assume that the stochastic processes of interest have finite average power $$E[X^2(t)] < \infty$$ for all t. We also assume, without loss of generality, that all finite-power processes have zero mean. Since the assumption of $E[X^2(t)] < \infty$ implies that $E[X] < \infty$ by the Cauchy-Schwarz inequality we can transform variables to 
+$$Y(t) = X(t) - E[X]$$ that have zero mean. \\
+
+\subsection{Mean-Square Limit}
+
+The various kinds of convergences used are summarized in Section [\ref{sec:convergence}]. Fundamental to the subject of mean-square limits is the Cauchy convergence theorem: 
+
+\begin{theorem}
+Let $X(t)$ be a real-valued, finite power stochastic process. The mean-square limit
+\[ Y(t) = \mslim_{t'\to t} X(t') = \mslim_{\epsilon \to 0} X(t+\epsilon) \]
+exists as a unique (in m.s. sense) stochastic process iff 
+\[ \lim_{t_1, t_2 \to t} E\Big[ [X(t_1) - X(t_2) ]^2  \Big] = \lim_{\epsilon_1, \epsilon_2 \to 0} E\Big[  [X(t+\epsilon_1) - X(t+\epsilon_2)]^2  \Big]  = 0 \]
+\end{theorem}
+
+\begin{definition}
+The mean-square limit $\displaystyle{\mslim_{\ninfty} X(t+t_n)}$ exists as a unique stochastic process iff the double limit
+\[ \mslim_{n, m \to \infty} [X(t+t_n) - X(t + t_m)]  = 0 \]
+\end{definition}
+
+Because we are working with zero-mean processes with finite average power the correlation function is finite by the Cauchy-Schwarz inequality:
+\[ | \Gamma(t_1, t_2) | = | E[X(t_1) X(t_2)] | \le \sqrt{E[X^2(t)] E[X^2(t_2)]} < \infty \]
+
+%Continuity properties for stochastic process depend on the type of convergence methods employed.
+
+\subsection{Mean Square Continuity}
+
+\begin{definition}
+A stochastic process $X(t)$ is {\elevenit mean-square (m.s.)  continuous}\/ at time $t$ if 
+\[ X(t) = \mslim_{t'\to t}[X(t') - X(t)] \equiv \mslim_{\epsilon \to 0} [ X(t+\epsilon) - X(t) ] = 0 \]
+\end{definition}
+
+Another way to express this limit is 
+\[ \lim_{t' \to t} \| X(t') - X(t) \|^2  = \lim_{t'\to t} E\left[(X(t') - X(t))^2 \right] = \lim_{\epsilon\to 0}E\left[(X(t+\epsilon) - X(t))^2 \right]  = 0   \]
+
+Mean-square continuity does not imply continuity at the individual sample function level. 
+
+The condition for mean-square continuity is given by the following theorem:
+\begin{theorem}
+At time t, a stochastic process $X(t)$ is mean-square continuous iff the correlation function $\Gamma(t_1, t_2)$ is continuous at $t=t_1=t_2$.
+\end{theorem}
+
+\begin{proof}
+Continuity of $\Gamma(t_1, t_2)$ is sufficient for m.s. continuity of $X(t)$:
+\begin{eqnarray*} 
+E[ (X(t') - X(t))^2 ] &=& E[X^2(t')] - E[X(t')X(t)] - E[X(t)X(t')] + E[X^2(t)] \\
+&=& \Gamma(t', t') - \Gamma(t', t) - \Gamma(t, t') + \Gamma(t, t)  
+\end{eqnarray*}
+Therefore if $\Gamma(t_1, t_2)$ is continuous at $t = t_1 = t_2$, then the RHS of the above equation is equal to zero as $t' \to t$ and $X(t)$ is mean-square continuous at $t$.\\
+
+Now let us assume that $X(t)$ is mean-square continuous at $t$. Form the difference $\Gamma(t_1, t_2) - \Gamma(t, t)$:
+
+\begin{eqnarray*} 
+\Gamma(t_1, t_2) - \Gamma(t,t) &=&  E[X(t_1) X(t_2)] - E[X(t) X(t) ]\\
+&=& E[ (X(t_1) - X(t)) (X(t_2) - X(t))] + E[(X(t_1) - X(t))X(t)] \\
+&=& E[X(t) ( X(t_2) - X(t))]
+\end{eqnarray*} and therefore
+\begin{eqnarray*} 
+|\Gamma(t_1, t_2) - \Gamma(t,t)| &\le& |E[ (X(t_1) - X(t)) (X(t_2) - X(t))]|  + |E[(X(t_1) - X(t))X(t)]| \\
+&+& |E[X(t) ( X(t_2) - X(t))]|
+\end{eqnarray*}
+
+Apply the Cauchy-Schwarz inequality to each term on the RHS of the above to obtain
+\begin{eqnarray*} 
+|\Gamma(t_1, t_2) - \Gamma(t,t)| &\le& \sqrt{ E[ (X(t_1) - X(t))^2 E(X(t_2) - X(t))^2] }  + \sqrt{E[(X(t_1) - X(t))^2 E[X^2(t)]} \\
+&+& \sqrt{ E[X^2(t)] E( X(t_2) - X(t))^2]}
+\end{eqnarray*} Since $X(t)$ is m.s. continuous at $t$, the RHS of the above approaches zero as $t_1, t_2 \to t$ as follows
+\[ \lim_{t1, t2 \to t} \Gamma(t_1, t_2) = \Gamma(t,t) \]and $\Gamma(t_1, t_2)$ is continuous at $t = t_1 = t_2$.\qed\end{proof}
+
+\subsection{Mean-Square Differentiation}
+
+We introduce the following operator on functions of one variable to simplify the expressions which follow:
+
+$$\Delta_\epsilon f(x)  = f(x+\epsilon) - f(x).$$ Because the operations which follow involve functions of two variables we define two delta-operators
+\begin{eqnarray*}
+\Delta_\epsilon^{(1)} f(t,s) &=& f(t+\epsilon, s) - f(t,s) \\ 
+\Delta_\epsilon^{(2)} f(t,s) &=& f(t, s +\epsilon) - f(t,s) \\ 
+\end{eqnarray*}
+
+A stochastic process $X(t)$ has a mean-square (m.s.) derivative denoted by $\dot{X}(t)$ if there exists a finite power stochastic process
+
+\[\dot{X}(t) = \mslim_{\epsilon\to0} \left[ {X(t+\epsilon) - X(t) \over \epsilon}  \right] =\mslim_{\epsilon\to0}\left[ {\Delta_\epsilon X(t)\over \epsilon} \right]    \] 
+
+These equations can also be expressed as
+
+\[ \lim_{\epsilon\to0} E \left[ \left( {X(t+\epsilon) - X(t) \over \epsilon} - \dot{X}(t) \right)^2 \right] =\lim_{\epsilon\to0}E\left[ \left( {\Delta_\epsilon X(t)\over \epsilon} - \dot{X}(t) \right)^2 \right] = 0 \] 
+
+According to the Cauchy Convergence Theorem, as $\epsilon\to0$, the quantity $\Delta_\epsilon X(t) / \epsilon$ has a m.s. limit iff
+\[ \mslim_{\epsilon_1, \epsilon_2\to 0} \left({\Delta_{\epsilon_1} X(t)\over \epsilon_1}   - {\Delta_{\epsilon_2} X(t)\over \epsilon_2}   \right) = 0.  \]
+ 
+This condition can be written as 
+
+\begin{eqnarray*} 
+\lim_{\epsilon_1, \epsilon_2\to 0}E\left[ \left({\Delta_{\epsilon_1} X(t)\over \epsilon_1}   - {\Delta_{\epsilon_2} X(t)\over \epsilon_2}   \right)^2\right] &=&
+\lim_{\epsilon_1, \epsilon_2\to 0}E\left[ \left({\Delta_{\epsilon_1} X(t)\over \epsilon_1}\right)^2   - 2\left({\Delta_{\epsilon_1} X(t)\over \epsilon_1}\right) \left( {\Delta_{\epsilon_2} X(t)\over \epsilon_2}   \right)
++ \left({\Delta_{\epsilon_2} X(t)\over \epsilon_2}\right)^2\right] \\ 
+&=& 0.
+\end{eqnarray*}
+
+There are two terms in the above which are equal to 
+\begin{eqnarray*} 
+\lim_{\epsilon \to 0}E\left[ \left({\Delta_{\epsilon} X(t)\over \epsilon}\right)^2\right] &=& \lim_{\epsilon \to 0}E\left[ \left({ X(t+\epsilon) - X(t) \over \epsilon}\right)^2\right]\\
+&=& \lim_{\epsilon \to 0} {\Gamma(t+\epsilon, t+ \epsilon) - \Gamma(t+\epsilon, t) - \Gamma(t, t+\epsilon) + \Gamma(t,t) \over \epsilon^2}
+\end{eqnarray*}
+and a cross term that is equal to 
+\begin{eqnarray*} 
+\lim_{\epsilon_1, \epsilon_2 \to 0}E\left[ \left({\Delta_{\epsilon_1} X(t)\over \epsilon_1}\right) \left({\Delta_{\epsilon_2} X(t)\over \epsilon_2}\right)  \right] &=& 
+\lim_{\epsilon_1, \epsilon_2 \to 0}E\left[ \left({ X(t+\epsilon_1) - X(t) \over \epsilon_1}\right) \left({ X(t+\epsilon_2) - X(t) \over \epsilon_2}\right)   \right]\\
+&=& \lim_{\epsilon_1, \epsilon_2 \to 0} {\Gamma(t+\epsilon_1, t+ \epsilon_2) - \Gamma(t+\epsilon_1, t) - \Gamma(t, t+\epsilon_2) + \Gamma(t,t) \over \epsilon_1\epsilon_2}
+\end{eqnarray*}
+
+Substituting these results back into the expression for the Cauchy series above we obtain
+\begin{eqnarray*} 
+\hbox{\bf (A)}\quad \lim_{\epsilon_1, \epsilon_2\to 0}E\left[ \left({\Delta_{\epsilon_1} X(t)\over \epsilon_1}   - {\Delta_{\epsilon_2} X(t)\over \epsilon_2}   \right)^2\right] &=&
+2 \lim_{\epsilon \to 0} {\Gamma(t+\epsilon, t+ \epsilon) - \Gamma(t+\epsilon, t) - \Gamma(t, t+\epsilon) + \Gamma(t,t) \over \epsilon^2} \\
+&\null& -2\lim_{\epsilon_1, \epsilon_2 \to 0} {\Gamma(t+\epsilon_1, t+ \epsilon_2) - \Gamma(t+\epsilon_1, t) - \Gamma(t, t+\epsilon_2) + \Gamma(t,t) \over \epsilon_1\epsilon_2}.
+\end{eqnarray*}
+
+Putting all these conditions together leads us to the 
+\begin{theorem}\label{thm:msDifferentiable}
+A finite-power stochastic process $X(t)$ is mean-square differentiable at $t$ iff, the double limit
+\[ \lim_{\epsilon_1, \epsilon_2\to 0} { \Delta^{(1)}_{\epsilon_1} \Delta^{(2)}_{\epsilon_2} \Gamma(t,t) \over \epsilon_1 \epsilon_2} =
+\lim_{\epsilon_1, \epsilon_2 \to 0} {\Gamma(t+\epsilon_1, t+ \epsilon_2) - \Gamma(t+\epsilon_1, t) - \Gamma(t, t+\epsilon_2) + \Gamma(t,t) \over \epsilon_1\epsilon_2} \]
+exists and is finite. 
+\end{theorem}
+
+\begin{proof}
+Sufficient Condition: if ${\partial \Gamma(t_1, t_2)\over \partial t_1},  {\partial \Gamma(t_1, t_2)\over \partial t_2},$ and ${ \partial^2\Gamma(t_1, t_2)\over \partial t_1 \partial t_2}$ exist in a neighborhood of $(t_1, t_2) = (t,t)$ and ${\partial^2  \Gamma(t_1, t_2) \over \partial t_1 \partial t_2}$ is continuous at $(t_1, t_2) = (t, t)$, then the above limit exist by the Calculus, and the process $X(t)$ will be differentiable at $t$.\\
+
+If the above sufficient condition does not hold, then $X(t)$ is m.s. differentiability implies that the above mean-square expectation {\bf (A)} is zero, independently of how $\epsilon_1$ and $\epsilon_2$ approach zero which means that the right-hand-side of the expression in the above exists and is finite. On the other hand if the right-hand-side of the expression in theorem [\ref{thm:msDifferentiable}] exists and has the value $R$, then this must hold regardless of how $\epsilon_1$ and $\epsilon_2$ approach zero. That means the limit of the first term on the RHS of the expectation {\bf (A)} is 2R and therefore the two terms cancel out exactly and $X(t)$ is m.s. differentiable.\qed
+\end{proof}
+
+Assuming that the sufficient condition in the 1st part of the above proof holds, the correlation function for the m.s. derivative $\dot{X}(t)$ is
+$$\Gamma_{\dot{X}} (t_1, t_2) = E[\dot{X}(t_1) \dot{X}(t_2)]  = {\partial^2 \Gamma(t_1, t_2)\over \partial t_1 \partial t_2}.$$
+
+\begin{example}Brownian Motion. We saw that the correlation function for Brownian motion is given by $\Gamma(t,s) = E[ B(t) B(s)] = \sigma^2 \min(s,t)$. \\
+
+Now 
+$$
+\min(s,t) = \Big\{
+\begin{array}{cc}
+t, & t < s \\
+s, & t > s
+\end{array}
+$$so that 
+$${\partial\over \partial s} \min(s,t) = 
+\begin{array}{cc}
+0, & t < s \\
+1, & t > s
+\end{array}$$which is the Heavyside unit step function (in $t$) and its derivative with respect to $t$ is the Dirac delta function: $\delta(t - s)$. \\
+
+The correlation function for the m.s. derivative of Brownian motion is therefore 
+$${\partial^2 \Gamma(t,s) \over \partial t \partial s}  = \sigma^2 \delta( t-s ).$$ Hence the second derivative does not exist in the sense of ordinary calculus function and therefore Brownian motion is not m.s. differentiable (we will see more on this in Section [\ref{sec:Brownian}]). However, in the sense of {\elevenit generalized functions}\/ we see that the second derivative of the correlation function is the delta-function which is the correlation function for the ``white noise'' stochastic process. Hence in the sense of generalized functions, Brownian motion is the integral of white noise, even though it is not m.s. differentiable. 
+\demo\end{example}
+
+\subsection{Mean-Square Riemann Integration}
+
+The last subject we will explore in mean-square calculus is mean-square integration. Integrals of stochastic process appear in many applications -- for example a slowly varying signal might be corrupted by high-frequency noise. In another application a more realistic model for physical Brownian motion (which is a finite length path) is given by the Langevin equation\cite{Sjogren},\cite{CalTech} which requires integrating ``white noise'' in the presence of frictional effects such as viscosity. Integrals of stochastic processes will therefore enter in the construction of {\elevenit Filters}\/ for {\elevenit Smoothing} as well as {\elevenit Prediction}.\\% Filters are a future topic of these notes.\\
+
+As in ordinary calculus we will partition the finite interval $[a, b]$ into subdivisions labeled by points $t_k, k = 0, 1, \hdots, n$ such that $$a = t_0 < t_1 < \hdots < t_n = b.$$ We will also label the increments in $t$ as $$\Delta t_i = t_i - t_{i-1}, \quad 1\le i \le n$$ We will label such a partition by $P_n$ which is made up of the $n+1$ points $t_k, k = 0, 1, \hdots n$. Also, although for simplicity we can take all the increments to be of equal size, we allow for the general case and define the upper bound on the increment (or mesh) size by
+$$\Delta_n = \max_k \Delta t_k$$ 
+
+As the partitions are refined into more and more points, $\Delta_n$ will decrease in a well behaved manner. 
+
+Now, as in ordinary calculus we can form a Riemann sum for a finite-power stochastic process $X(t)$ as 
+
+$$\sum_{k=1}^n X(t^*_k) \Delta t_k, \quad\hbox{where~~} t^*_k \in (t_{k-1}, t_k].$$
+
+From this starting point we define the mean-square Riemann integral on the interval $[a, b]$ (known as the Wiener integral) as
+
+\be \int_a^b X(t) dt \equiv \mslim_{\Delta_n \to 0} \sum_{k=1}^n X(t^*_k)\Delta t_k.\label{eqn:RiemannIntegral} \ee
+
+If everything is well behaved, then as $\Delta_n\to0$, then $\ninfty$ and the Riemann sum converges in mean-square to the mean-square Riemann integral. We state the requirement for convergence to occur:
+
+\begin{theorem}
+The Wiener integral, Eq. [\ref{eqn:RiemannIntegral}], exists, iff the ordinary double integral 
+\be \int_a^b \int_a^b \Gamma(s,t) ds dt \ee exists and is finite. 
+\end{theorem}  
+
+\begin{proof}We will apply the Cauchy Convergence Criteria to prove the above result. 
+Let $P_n$ and $P_m$ denote two distinct partitions of the $[a, b]$ interval. Let us take them to be given by
+
+$$P_n:  \Bigg\{
+\begin{array}{rl}
+a &= t_0 < t_1 < \hdots < t_n = b\\
+\Delta t_i &= t_i - t_{i-1} \\
+\Delta_n &= \max_{i} \Delta t_i
+\end{array} $$
+
+$$P_m:  \Bigg\{
+\begin{array}{rl}
+a &= s_0 < s_1 < \hdots < s_n = b\\
+\Delta s_i &= s_i - s_{i-1} \\
+\Delta_m &= \max_{i} \Delta s_i
+\end{array} $$
+According to the Cauchy Convergence Criteria, the Wiener integral (Eq. [\ref{eqn:RiemannIntegral}] ) exists iff, 
+
+\be  \lim_{\Delta_n, \Delta_m \to 0} E \left[\left( \sum_{k=1}^n X(t^*_k) \Delta t_k - \sum_{j=1}^m X(s^*_j) \Delta s_j \right)^2 \right] = 0 \label{eqn:WienerConvergence}\ee
+
+Now expand the square in Eq. [\ref{eqn:WienerConvergence}] and take the expectations to obtain 
+
+\be 
+\sum_{k=1}^n \sum_{i=1}^n \Gamma(t^*_k, t^*_i) \Delta_{t_k} \Delta_{t_i}  
+- 2\sum_{k=1}^n \sum_{j=1}^m \Gamma(t^*_k, s^*_i) \Delta_{t_k} \Delta_{s_j} +   
+\sum_{j=1}^m \sum_{i=1}^m \Gamma(s^*_k, s^*_i) \Delta_{s_k} \Delta_{s_i}  
+= 0 \label{eqn:crossTerm}\ee
+ 
+ As $\Delta_n$ and $\Delta_m$ approach zero, Eq. [\ref{eqn:WienerConvergence}] is true iff
+ 
+ \be \lim_{\Delta_n, \Delta_m \to 0} \sum_{k=1}^n \sum_{j=1}^m \Gamma(t^*_k, s^*_i) \Delta_{t_k} \Delta_{s_j}  =  \int_a^b \int_a^b \Gamma(t,s) dt ds  \ee
+
+The cross-term in Eq. [\ref{eqn:crossTerm}] must converge independent of the paths that $n$ and $m$ take as $n, m \to \infty$. If this happens the first and third sums on LHS of Eq. [\ref{eqn:crossTerm}] converge to the same double integral, and Eq. [\ref{eqn:WienerConvergence}] holds true.\qed 
+ \end{proof}
+ 
+ We end this section with an example based on Brownian motion. 
+ \begin{example}
+ Let $X(t)$ be the Brownian motion process, and consider the m.s. integral
+ \be Y(t) = \int_0^t X(s) ds \ee
+Now, for the Brownian motion process $\Gamma(u,v) = \sigma^2\min(u,v)$ and this can be integrated to obtain
+\begin{eqnarray*}
+\int_0^t \int_0^t \Gamma(u,v) du dv &=& \int_0^t \int_0^t \sigma^2\min(u,v) du dv \\
+&=& \sigma^2 \int_0^t [\int_0^v  u du + \int_v^t v du]\, dv \\
+&=& \sigma^2 t^3/3
+\end{eqnarray*}
+Therefore, Brownian motion is m.s. Riemann integrable. 
+ \demo\end{example}
+ 

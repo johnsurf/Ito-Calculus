@@ -1,0 +1,90 @@
+\section{Conditional Probability, Independence and Expectation}
+\label{sec:Conditioning}
+Consider two events $A$ and $B$ and ask: What is the probability of the event $A$ given that the event $B$ has already been observed? Since $B$ has been observed, the available sample space $\Omega$ is reduced to the set of outcomes in $B$ and hence we must consider the effects of a reduced set of possible outcomes. In effect $B$ becomes the new sample space of possible outcomes. To compute the relative probability of observing $A$ given that $B$ has been observed we construct the conditional probability $$P(A|B) = {P(A\cap B)\over P(B)}.$$ The left hand side is read as ``the conditional probability of $A$ given $B$'' and the right hand side are the probabilities computed with respect to the original sample space $\Omega$. In this way we can take into account that the sample space $\Omega$ has been reduced by observing an event in the set $B$. It is unimportant if $P(A|B)$ is undefined if $P(B)=0$, since we would not consider finding $A\cap B$ in the first place (there being zero probability of having first observed $B$).\\
+
+Conditional probability can be shown to satisfy the three axioms of probability given in Section [\ref{sec:Probability}] and hence has all the properties of a probability function. \\
+
+Two events are said to be {\elevenit independent} if the observation of the first event does not effect the probability of observing the second event. In other words $$P(A|B) = P(A).$$ This is equivalent to $$P(A\cap B) = P(A) P(B)$$ where, again, the probabilities $P(A)$ and $P(B)$ are defined with respect to the original sample space $\Omega$.\\
+
+If the joint probability of events $x\in A$ and $y\in B$ is given in terms of a probability density function $$f_{X,Y}(x,y).$$ Then we can determine the separate or marginal probability functions for $x$ with $y$ unrestricted by $$f_X(x) = \int f_{X,Y}(x,y)\, dy\quad\hbox{and}\quad f_Y(y) = \int f_{X,Y}(x,y)\, dx$$
+
+We will use the shorthand $X$ and $Y$ to stand for that random variables $x(\omega)$ and $y(\omega)$ respectively. Let us now find the density function for finding $Y\in A$ given that we have observed $Y\in B$. This will require a limiting process (since $P\{Y = y\} = 0$ for an isolated continuous random variable in $B$). We will choose an interval about $y$ of the form $(y, y+ \Delta y]$ and compute the probability $$P\{y < Y  \le y + \Delta y\}=\int_y^{y + \Delta y} f_Y(y) dy \approx f_Y(y) \Delta y.$$ First let us compute the conditional probability that $X \le x$ given $B$.
+$$P\{ X \le x | B \} = { P\{ X \le x, B\}\over P(B)}.$$ For $Y \approx y$, we take $B$ as the set $B = \{ y < Y \le y + \Delta y\}$ with probability $P(B) = f_Y(y) \Delta y$ 
+and we write the conditional probability distribution function $P\{X \le x| B \}$ as 
+\begin{eqnarray*}F_{X | y < Y \le y + \Delta y} &=& { P\{X \le x, y < Y \le y + \Delta y\} \over f_Y(y) \Delta y} \\
+&=&{\int_{-\infty}^x \int_y^{y + \Delta y} \, f_{X,Y}(u,v) du dv \over  f_Y(y) \Delta y}\\
+&=&{\int_{-\infty}^x \, f_{X,Y}(u,y) du \Delta y \over  f_Y(y) \Delta y} \\
+&=&{\int_{-\infty}^x \, f_{X,Y}(u,y) du \over  f_Y(y)} \\
+\end{eqnarray*}
+Taking the limit as $\Delta y \rightarrow 0$ we obtain $\lim{_\Delta Y\rightarrow 0} F_{X,| y < Y \le y + \Delta y} = F_{X|Y}(x,y)$ and 
+$$F_{X|Y}(x|y) = {\int_{-\infty}^x \, f_{X,Y}(u,y) du \over  f_Y(y)}.$$ Differentiating with respect to $x$ we obtain
+$$f_{X|Y}(x|y) \define {\partial F_{X|Y}(x|y) \over \partial x} = {f_{X,Y}(x,y)\over f_Y(y)}$$
+
+Rewriting the above, we also have 
+\be f_{X,Y}(x,y) = f_{X|Y}(x | y)\cdot f_Y(y)\quad\hbox{and, by symmetry}\quad= f_{Y|X}(y | x)\cdot f_X(x) \label{eqn:jointConditional}\ee
+
+%%%%%% may want to switch X and Y in the following for continuity with the above. 
+Given the conditional probability density function $f_{X|Y}(x|y)$ or $f_{Y|X}(x|y)$ we can show that it satisfies all the axioms of probability and can be interpreted as a probability in its own right. Therefore we can 
+use $f_{Y|X}(x|y)$ to define the Conditional Expectation
+\begin{definition}
+The conditional expectation of the random variable (vector)  $Y$ given the random variable (vector) $X$ (given $x(\omega) = x$ is defined by 
+$$E[Y|X] \define \int y f_{Y|X}(y|x) dy$$ If $Y$ is a random vector, then 
+\be E[Y|X] = \big(E[Y_1|X],\hdots,E[Y_n|X]  \big)\ee
+\end{definition}
+
+Notice that 
+
+\bearray
+f_{Y|X}(y | x) &\ge& 0, \\
+\int   f_{Y|X}(y | x)\, dy &=& 1, \\
+f_Y(y) &=&  E[ f_{Y|X}(y | x)] = \int f_{Y|X}(y | x) f_X(x)\, dx. \\
+f_{Y|X}(y | x) &=& f_Y(y) \quad\hbox{if $X$ and $Y$ are independent.}
+\eearray
+
+If one is dealing with random variables that are a mixture of discrete values and continuous values, it is useful to employ the Riemann-Stieltjes Integral which in the continuous case
+is based on the differential identity $dF_X(x) = f_X(x) dx$.
+Using this notation, the conditional expectation, $E[Y|X = x]$ is given by 
+\be E[Y|X = x] = \int_{-\infty}^\infty y f_{Y|X}(y|x)\, dy \ee and if one takes the expectation of $E[Y|X=x]$ with respect to the probability function for $X$, then it is reasonable that we should find
+
+\be E[Y] = \int_{-\infty}^\infty E[Y|X=x] dF_X(x) \label{eqn:expY} \ee
+
+It is also reasonable that the conditional expectation of $E[g(X) Y | X = x ]$ should satisfy the equation
+\be  E[ g(X) Y | X = x ]  =  g(x) E[Y |X=x] \label{eqn:expg_X_Y}\ee for any function $g(X)$ of a random variable $X$ such that $E[g(X)Y] < \infty$. If we put Eq. [\ref{eqn:expY}] and Eq. [\ref{eqn:expg_X_Y}] together we should expect 
+\be E[ g(X) Y | X = x ]  = \int_{-\infty}^\infty g(x) E[Y |X=x] dF_X(x) \label{eqn:expg_X_Y_new}\ee Now we will use the notation that $E[Y|X] = E[Y | X=x]$, so that $E[X|Y]$ denotes the function whose value when $X=x$ is defined to be 
+equal to $E[Y| X=x]$. Using this notation we may rewrite Eq. [\ref{eqn:expg_X_Y_new}] as
+\be E[g(X) Y ] = E[g(X) E[Y|X]].\ee
+
+In the particular case of $g(X) = 1$ we find
+\be E[Y] = E[ E[Y|X] ] \label{eqn:expEY}\ee provided that $E[Y]< \infty$ and we see how the unconditional expectation is related to the conditional expectation. An important formula relates the unconditional 
+variance to conditional expectations. If $E[Y^2] < \infty$, then 
+\be \Var[Y] = E\big[\Var[Y|X]\big] + \Var\big[E[Y|X]\big] \label{eqn:conditionalVariance}\ee
+Or {\elevenit the variance is equal to the mean of the conditional variance plus the variance of the conditional mean.}
+To prove Eq. [\ref{eqn:conditionalVariance}] use Eq. [\ref{eqn:expEY}] to write
+\be \Var[Y] = E\big[ (Y - E[Y] )^2 \big] = E\big[ E[(Y - E[Y])^2 | X ] \big] \ee 
+Now for any random variable $Z$ and any constant $a$ we have 
+\be E[(Z-a)^2] = E[ (Z-E[Z])^2 ] + (E[Z] - a)^2. \label{eqn:parallelAxis}\ee To prove Eq. [\ref{eqn:parallelAxis}] expand both sides and compare terms. The 
+LHS expands out to: 
+
+\bearray
+E[(Z-a)^2] &=& E[Z^2 - 2aZ + a^2) \\
+&=&E[Z^2] - 2aE[Z] + a^2 
+\eearray
+
+The RHS expands out to
+\bearray
+E[ (Z - E[Z] )^2 ] + (E[Z] - a)^2 &=& E[Z^2 - 2ZE[Z] + (E[Z])^2] + (E[Z])^2 - 2aE[Z] + a^2 \\
+&=&E[Z^2] - 2(E[Z])^2 + (E[Z])^2 + (E[Z])^2 - 2aE[Z] + a^2\\
+&=& E[Z^2] -2aE[Z] + a^2 
+\eearray
+and we see that the LHS = RHS verifying Eq. [\ref{eqn:parallelAxis}].
+Applying Eq. [\ref{eqn:parallelAxis}] to the conditional expectation  $E\big[ (Y-E[Y])^2 | X\big]$ we obtain
+\be E[(Y-E[Y])^2 | X] = E[ (Y-E[Y|X])^2  | X ] + (E[Y|X] - E[Y] )^2 \label{eqn:inner}\ee
+Taking a final expectation of Eq. [\ref{eqn:inner}] with respect to $X$ and noting that $E[Y] = E\big[E[Y|X] \big]$ results in 
+\bearray
+\Var[Y] &=& E\big[E[(Y-E[Y])^2 | X] \big]\\
+&=& E\big[ E[ (Y - E[Y|X])^2  | X ] \big] + E\big[(E[Y|X] - E[E[Y|X]] )^2 \big] \\
+&=& E\big[ \Var[Y|X] \big] + \Var\big[ E[Y|X] \big]
+\eearray
+%%%%%%
+
+%%%%%

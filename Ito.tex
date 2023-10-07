@@ -1,0 +1,133 @@
+\section{Ito's Isometry and Ito's Lemma}
+
+In this section we will investigate the existence, in a certain sense, of $$``\int_0^t f(s,\omega) dB(s,\omega)''$$ where $B(t, \omega)$ is a 1-dimensional Brownian motion starting at the origin, for a class of functions $f: [0,\infty] \times \Omega \rightarrow R$.\\
+
+Suppose $0\le S \le T$ and $f(t,\omega)$ is given, We want to define $$\int_S^T f(s,\omega) dB(s,\omega).$$ To do so we will develop the integral for a simple class of functions $f$ and then extend to more general functions by some approximation method. Let us first assume that $f$ has the form
+
+$$\phi(t,\omega) = \sum_{j\ge0} e_j(\omega)\cdot \chi_{(j\cdot2^{-n}, (j+1)2^{-n}]} (t),$$ where $\chi_{[t_j, t_{j+1} ) } (t)$ is the Indicator Function which is equal to 1 if $t\in [t_j, t_{j+1})$ and 0 if $t$ is outside that interval and $n$ is a natural number. For such functions it is reasonable to define $$\int_S^T f(s,\omega) dB_s(\omega) = \sum_{j\ge0}[B(t_{j+1}) - B(t_j)](\omega),$$ where 
+
+$$t_k = t_k^{(n)} =
+\Bigg\{ 
+\begin{array}{l}
+k\cdot2^{-n}\quad \hbox{if} \quad S \le k\cdot 2^{-n} \le T\\
+S \quad \hbox{if} \quad k\cdot2^{-n} < S \\
+T \quad \hbox{if} \quad k\cdot2^{-n} > T
+\end{array}
+\Bigg\}$$
+
+Without any further assumptions on the functions $e_j(\omega)$ the above definition leads to difficulties as the next example shows.
+\begin{example}
+Choose
+\begin{eqnarray*}
+\phi_1(t,\omega) &=& \sum_{j\ge0} B(j\cdot2^{-n},\omega)\cdot \chi_{(j\cdot2^{-n}, (j+1)\cdot2^{-n}]} (t) \\
+\phi_2(t,\omega) &=& \sum_{j\ge0} B((j+1)\cdot2^{-n},\omega)\cdot \chi_{(j\cdot2^{-n}, (j+1)\cdot2^{-n}]} (t) \\
+\end{eqnarray*}
+Then $$E[\int_S^T \phi_1(t,\omega) dB(t,\omega)] = \sum_{j\ge0} E[B(t_j)(B(t_{j+1}) - B(t_j))] = 0,$$ since $B(t,\omega)$ has independent increments. But
+\begin{eqnarray*}
+E[\int_S^T \phi_2(t,\omega) dB(t,\omega)] &=& \sum_{j\ge0} E[B(t_{j+1})(B(t_{j+1}) - B(t_j))] \\
+&=& \sum_{j\ge0} E[(B(t_{j+1}) - B(t_j))^2]  = T\\
+\end{eqnarray*}
+So, in spite of both $\phi_1$ and $\phi_2$ appearing to be reasonable appoximations to $f(t,\omega) = B(t,\omega)$, their integrals are not close to each other at all no matter how 
+large $n$ is taken to be. 
+\end{example}
+
+It is natural to approximate a function $f(t,\omega)$ by $$\sum_jf(t^*_j,\omega)\cdot \chi_{(t_j,t_{j+1}]}(t)$$ where the points $t^*_j$ belong to the intervals $(t_j, t_{j+1}]$, and then define $\int_S^T f(t,\omega) dB(t,\omega)$ as the limit of $\sum_j f(t^*_j, \omega)[B(t_{j+1}) - B(t_j)](\omega)$ as $\ninfty$. However as the example above shows that -- unlike the Riemann-Stieiltjes integral -- it does make a difference here what points $t^*_j$ we choose.\\
+
+There are two standard choices that have turned out to be the most useful:\\
+
+1) $t^*_j = t_j$ (the left end point), which leads to the {\elevenit Ito integral} which we will denote by $$\int_S^T f(t,\omega) dB(t,\omega),$$
+2) $t^*_j = (t_j + t_{j+1})/2$ (the mid point), which leads to the {\elevenit Stratonovich integral} denoted by 
+$$\int_S^T f(t,\omega) \circ dB(t,\omega),$$
+
+We will work with square-integrable functions whose mean-square is assumed to be finite, i.e., $$E[\int_S^T f(t,\omega)^2\,dt] < \infty.$$ We will also work with ``elementary functions'' of the form $$ \phi(t,\omega) = \sum_j\,e_j(\omega) \cdot \chi_{[t_j, t_{j+1})}(t) $$ where $e_j(\omega)$ are a set of $n$ real numbers indexed by $j = 1, 2, ..., n$. $\phi(t,\omega)$ is a ``simple function'' and can used to approximate an arbitrary measurable function on $(T,\Omega)$.\\
+
+Ito's Isometry follows. An {\elevenit Isometry}\/ is a transformation that preserves the norm -- in this case the $L_2$-norm with respect to square-integrable functions. Another famous isometry is the Plancherel-Parseval theorem (see Eq. [\ref{eqn:Plancherel}]).
+
+\begin{lemma}{The Ito isometry:}
+If $\phi(t,\omega)$ is bounded and elementary then 
+$$E\Big[\Big( \int_S^T\, \phi(t,\omega)\, dB_t(\omega)\Big)^2\Big] = E\Big[\int_S^T\, \big(\phi(t,\omega)\big)^2 \, dt\Big].$$ 
+\end{lemma}
+
+\begin{proof}
+Put $\Delta B_j = B(t_{j+1}) - B(t_j)$. Then 
+$$E[e_ie_j \Delta B_i \Delta B_j] = \Bigg\{
+\begin{array}{l}
+0 \quad \hbox{if} \quad i\neq j \\
+E[e_j^2] \quad \hbox{if} \quad i=j \\
+\end{array}$$ using the fact that $e_i e_j\Delta B_i$ and $\Delta B_j$ are independent if $i<j$.
+Therefore 
+\begin{eqnarray*}
+E[(\int_S^T \phi\, dB)^2] &=& \sum_{i,j} E[e_ie_j\Delta B_i\Delta B_j] = \sum_{j} E[e_j^2]\cdot (t_{j+1} - t_j) \\
+&=& E[\int_S^T \phi^2 dt].\qed
+\end{eqnarray*}
+\end{proof}
+
+It is possible to extend the application of the Ito isometry to functions, $f$ which can be represented by the limit as $\ninfty$ of a sequence of elementary functions $\phi_n$ in the sense of mean squares, i.e., 
+$$E[\int_S^T (f- \phi_n)^2 dt] \rightarrow 0 \hbox{~as~} \ninfty.$$
+
+In this case we would define the Ito integral $\cal I$ as $${\cal I}[f](\omega) := \lim_{\ninfty}\int_S^T \phi_n(t,\omega)\, dB(t,\omega).$$ In this case the Ito isometry becomes
+$$E\Big[\Big( \int_S^T\, f(t,\omega)\, dB_t(\omega)\Big)^2\Big] = E\Big[\int_S^T\, f(t,\omega)^2 \, dt\Big].$$ 
+
+Let us know look at Ito's lemma:
+\begin{lemma}{Ito's lemma}
+$$\int_0^t B(s,\omega)\, dB(s,\omega) = {1\over2}B^2(t, \omega) - {1\over2}t.$$
+\end{lemma}
+
+Before going into the proof the Ito's lemma consider the values of the Brownian motion (a continuous function) at discrete times $t \in \{t_1, t_2, ..., t_n \}$ or the set $\{B_1, B_2, ..., B_n\}$.\\
+
+Let $\Delta B_j = B_j - B_{j-1}$ and let $\Delta B^2_j = B^2_j - B^2_{j-1}$. Then $$(\Delta B_j)^2 = B^2_j + B^2_{j-1} - 2B_{j-1}B_j$$ and 
+\begin{eqnarray*}
+(\Delta B_j)^2 + 2B_j\Delta B_j &=& B^2_j + B^2_{j-1} - 2B_{j-1}B_j \\
+& = & B^2_j + B^2_{j-1}  - 2B_{j-1}B_j + 2B_{j-1}B_j  - 2B^2_{j-1} \\
+& = & B^2_j - B^2_{j-1} \\
+& = & \Delta B^2_j
+\end{eqnarray*}
+
+or $$ \Delta B^2_j = 2B_{j-1}\Delta B_j + (\Delta B_j)^2$$
+
+Or equivalently, 
+$$B_{j-1}\Delta B_j - {1\over2}\Delta B^2_j  + {1\over2}(\Delta B_j)^2 = 0$$
+
+Taking ``infinitesmal limits'' we can write $$\Delta B^2 = 2\,B\, \Delta B + (\Delta B)^2$$
+
+Now Ito's lemma can be shown to hold ``on average'' by taking the expectation of the above result. Because Brownian motions have properties of normal distributions, then this gives
+
+\begin{eqnarray*}
+E[\Delta B^2] &=& E[2\,B\, \Delta B + (\Delta B)^2]\\
+&=& 2B\, \Delta B + \sigma^2 \Delta t
+\end{eqnarray*}
+where $\sigma^2$ is the standard deviation associated with the Brownian motion. This is Ito's lemma. In Integral Form is can be written as 
+
+$$\int B\,dB = {1\over2}B^2 - {1\over2} \sigma^2 t$$
+
+Let us know prove Ito's lemma in detail
+\begin{proof}
+Put $\phi_n(s,\omega) = \sum B_j(\omega) \cdot \chi_{[t_j, t_{j+1})}(s)$, where $B_j = B(t_j, \omega)$ and $B_s = B(s, \omega)$. Then 
+\begin{eqnarray*}
+E[\int_0^t(\phi_n - B(s,\omega) )^2 ds] &=& E[\sum_j \int_{t_j}^{t_{j+1}} (B_j - B_s)^2 \, ds]  \\
+= \sum_j\int_{t_j}^{t_{j+1}} (s-t_j) ds  &=& \sum_j {1\over2}(t_{j+1} - t_j)^2 \rightarrow 0 \hbox{~as~} \Delta t \rightarrow 0. 
+\end{eqnarray*}
+Therefore $$\int_0^t B_s\, dB_s = \lim_{\Delta t_j\rightarrow 0} \int_0^t \phi_n\, dB_s.$$
+Now
+\begin{eqnarray*}
+&\null& E[( {1\over2}B_t^2 - {1\over2}t - \sum_j B_j \Delta B_j)^2] \\
+&=&E[{1\over4} B_t^4 + {1\over4}t^2 + (\sum_j B_j \Delta B_j)^2 - B_t^2\cdot \sum_j B_j\Delta B_j - {1\over2}tB_t^2 + t\cdot \sum_j B_j\Delta B_j] \\
+&=& {3\over4}t^2 + {1\over4}t^2 + E[(\sum B_j \Delta B_j)^2] - E[B_t^2\cdot \sum B_j\Delta B_j] - {1\over2}t^2 + 0. 
+\end{eqnarray*}
+Also, $$E[(\sum B_j \Delta B_j)^2] = \sum_{i,j} E[B_iB_j\Delta B_i \Delta B_j] = \sum_iE[B_i^2(\Delta B_i)^2]  \sum_i t_i \Delta t_i$$ and
+\begin{eqnarray*}
+&\null&E[B_t^2\cdot \sum B_j \Delta B_j] = \sum_jE[B_t^2B_j\Delta B_j] = \sum_j E[\{(B_t - B_{j+1}) + \Delta B_j + B_j\}^2\cdot B_j\cdot \Delta B_j]\\
+&=&\sum_jE[(B_t - B_{j+1})^2 B_j\Delta B_j] + \sum_j E[B_j\cdot (\Delta B_j)^3] + \sum_jE[B_j^3\cdot \Delta B_j] \\
+&+& 2\sum E[(B_t - B_{j+1}) B_j\Delta B^2_j] + 2\cdot\sum_j E[(B_t-B_{j+1})B_j^2\Delta B_j + 2 \sum_j E[B_j^2\Delta B_j^2]\\
+&=& 0 + 0 + 0 + 0 + 0 + 2\sum_j t_j\cdot \Delta t_j
+\end{eqnarray*}
+
+Hence we have Ito's lemma: $$E[({1\over2}B_t^2 - {1\over2}t - \sum_j B_j \Delta B_j)^2] = {1\over2}t^2 - \sum_j t_j\Delta t_j \rightarrow 0 \hbox{~as~} \Delta t_j \rightarrow 0\qed$$
+\end{proof}
+
+This is the end of the demonstration of Ito's lemma.\\
+
+As is well-known, Langevin's description of Brownian motion introduces a physical  modification to take into account viscosity (friction) \cite{Sjogren}, \cite{CalTech}. The result is that physical Brownian motion has finite total variation and the particles undergoing Brownian motion do not 
+travel at infinite speed.\\
+
+ It would be interesting to explore the effects of special relativity which require that the speed of any particle is less than the speed of light (relativistic Brownian Motion).  Also, in Quantum Field Theory -- the commutators of physical observables vanish outside the light-cone, however the propagators associated with quantum mechanical wave-functions have exponentially decaying tails outside the light cone. We talk about time-like and space-like particles to distinguish particles which have time-like or space-like momentum 4-vectors, or equivalently are propagating inside or outside the light cone. The paradox is that even though it is possible for a propagator associated with a physical particle not to vanish outside the light cone, nevertheless there is a strict requirement of microscopic causality that the commutators associated with physical observables must vanish identically outside the light cone. A study of relativistic Brownian motion may shed some light on this subject.

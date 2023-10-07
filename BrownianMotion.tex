@@ -1,0 +1,102 @@
+\section{Properties of Brownian Motion Paths}
+\label{sec:Brownian}
+
+Most of the ideas in this section were explained to me by Howard Weiner of UC Davis \cite{Weiner1}.\\
+
+There are several important properties of Brownian motion:\\
+
+1) Brownian motions have finite total Quadratic Variation.\\
+2) Brownian motions have infinite length almost surely (a.s.) \\
+3) Brownian motions are non-differentiable \\
+4) Brownian motions are continuous functions $t$ or have continuous versions.\\
+
+In what follows in this section let B(t) be the standard Brownian Motion (B.M.) with mean zero and variance parameter $\sigma^2 = 1$.\\
+
+\subsection{Brownian motions have finite Quadratic Variation}
+
+The exposition in this section works with one complete Brownian motion chosen from the sample space at a time, or at the sample function level. \\
+
+Define the Quadratic Variation of B.M. as follows (on $[0,1]$):
+
+Let $$V_n \equiv \sum_{l=1}^{2^n}\, \left[ B({l\over2^n}) - B({l-1\over2^n})\right]^2,$$ where we again sum over the $2^n$ dyadic intervals of length $1/2^n$.\\
+
+By stationary independent increments, the random variables $$\Big[ B({l\over2^n}) - B({l-1\over2^n}) \Big]$$ are independent identically distributed (IID) $\sim N(0,1/2^n)$. Therefore $E[V_n] = 1$.\\
+
+From Eq.[\ref{eqn:moments}], $X\sim N(0,\sigma^2) \implies E[X^4] = 3\sigma^4$ so that $$\hbox{Var}[X^2] = E[X^4] - (E[X^2])^2 - 3\sigma^4 - \sigma^4 = 2\sigma^4.$$ Then 
+
+$$\hbox{Var}[V_n] = E[(V_n - 1)^2] = \left(2({1\over2^n})^2\right) \cdot 2^n = {1\over2^{n-1}}$$ 
+
+Therefore $$\lim_{\ninfty} E[(V_n - 1)^2]  \goes 0\quad\hbox{and}\quad\lim_{\ninfty}\, V_n = 1\quad\hbox{in q.m.}$$
+Then define the Quadratic Variation of BM on $[0,1]$ by $$V \equiv \lim_{\ninfty}\, V_n.$$ Therefore $V\goes1$ on $[0,1]$ in q.m.\\
+
+To go a little further\footnote{Following the discussion in \url{https://idontgetoutmuch.wordpress.com/2012/03/17/the-quadratic-variation-of-brownian-motion}} define a corresponding set of random variables $X_l$ by
+$$X_l = \left[ B(t_{l+1}) - B(t_l)\right]^2 - [t_{l+1} - t_l]$$ and use the partition, $\pi_n$ of $[0,1]$ given by $t_l = {l\over2^n}, l = 0,1,2,\hdots 2^n,  \Delta t_n =  2^{-n}$.
+
+Then $$E\Big[ \left( \sum_{i=0}^{n-1} \left[ B(t_{l+1}) - B(t_l)\right]^2 - (t_{l+1} - t_l) \right)^2\Big] = E\Big[ \left( \sum_{i=0}^{n-1} \left[ B(t_{l+1}) - B(t_l)\right]^2 - t]\right)^2\Big]$$ 
+Since the $X_l$'s are independent with zero means we can write the above as
+$$E\Big[ \left( \sum_{i=0}^{n-1} \left[ \big(B(t_{l+1}) - B(t_l)\big)^2\right] - t \right)^2\Big] = E\left[\Big(\sum_{i=0}^{n-1} X_i \Big)^2\right] = \sum_{i=0}^{n-1}E[X_i^2] $$
+Now since the 4th moment of a normally distributed random variable with variance $\sigma^2$ is $3\sigma^4$, we have
+\begin{eqnarray*}
+E[X_i^2] &=& E[ ( B(t_{i+1}) - B(t_i) )^4] -2(t_{i+1} - t_i)E[ (B(t_{i+1}) - B(t_i) )^2] + (t_{i+1} - t_i)^2\\
+&=& 3(t_{i+1} - t_i)^2 - 2(t_{i+1} - t_i)^2 + (t_{i+1} - t_i)^2 \\
+&=& 2(t_{i+1} - t_i)^2
+\end{eqnarray*}
+Therefore 
+\begin{eqnarray*}
+\sum_{i=0}^{n-1} E[X_i^2] &=& 2\sum_{i=0}^{n-1} (t_{i+1} - t_i)^2 \\
+&\le&2(\Delta t_n) \sum (t_{i+1} - t_i) \\
+&=& 2t\Delta t_n
+\end{eqnarray*}
+
+and so $$E\left[ \Big( \sum_{i=0}^{n-1} X_i \Big)^2 \right] \le 2t\Delta t_n$$ and by Chebyshev's inequality (see appendix) 
+$$P\left(\Big| \sum_{i=0}^{n-1} X_i \Big| > \epsilon \right) \le {E\left[  \left( \sum_{i=0}^{n-1} X_i \right)^2 \right] \over \epsilon^2} \le {2t\Delta t_n \over \epsilon^2} $$
+
+Now choose a sequence $\pi_n$ of the $2^n$ dyadic divisions of the interval $[0,1]$ with $n=1,2,\hdots$ and note that $\sum_{i=0}^\infty {1\over2^n} = 2$. Then
+$$\sum_{n=1}^\infty P\left(\Big| \sum_{t_i \in \pi_n} \left[ B(t_{i+1}) - B(t_i)\right]^2 - (t_{i+1} - t_i)\Big| > \epsilon \right) \le   {2t\sum_{n=1}^\infty \Delta t_n \over \epsilon^2} < \infty$$
+   
+By the first Borel-Cantelli lemma (see appendix) there can only be a finite number of members of the $\pi_n$ sequence that are such that 
+$$\Big| \sum_{t_i \in \pi_n}  \left[ B(t_{i+1}) - B(t_i)\right]^2 - (t_{i+1} - t_i) \Big| > \epsilon $$ Therefore we can conclude that there must exist an $N \ge 1$ such that for all $n>N$ we must have
+$$\big| \sum_{t_i \in \pi_n}  \left[ B(t_{i+1}) - B(t_i)\right]^2 - (t_{i+1} - t_i) \big|  < \epsilon$$ Hence we conclude that 
+$$\sum_{t_i \in \pi_n}          \left[ B(t_{i+1}) - B(t_i)\right]^2 - (t_{i+1} - t_i) \rightarrow 0$$ wp1 (a.s.) Therefore we have shown that the quadratic variation $V\goes1$ on $[0,1]$ in q.m. and a.s. 
+ 
+\subsection{Brownian motions have infinite length}
+
+This section also works at the sample function level. \\
+
+Now define the Total Variation of B.M. on $[0,1]$ by $$T = \lim_{\ninfty} T_n \equiv \lim_{\ninfty} \sum_{l=1}^{2^n} \big| B({l\over 2^n}) - B({l-1\over2^n})\big|.$$
+
+By the triangle inequality, since the (n+1)-th mesh cuts the n-th in half, $T_n$ is monotonically increasing and converges to $T$, i.e., $T_1 < T_2< \hdots < T_n < T_{n+1} < \hdots $ and $$\lim_{\ninfty} T_n \to T$$ which we designate with the $\uparrow$ symbol (see Section [\ref{sec:notation}]), viz., 
+$$T_n \le T_{n+1} \uparrow T$$ So that $T$ is well-defined a.s.and is a lower bound for the path length, since $\{ B(t) \}$ is continuous a.s. \\ Now $$V_n = \sum_{l=1}^{2^n} \left[ B({l\over2^n}) - B({l-1\over2^n})\right]^2$$ so that
+
+$$V_n \le \left[\max_{1\le l \le 2^n} \left| B({l\over2^n}) - B({l-1\over2^n}) \right|\right] \cdot \big(\sum_{l=1}^{2^n} \left| B({l\over2^n}) - B({l-1\over2^n})  \right| \big)$$ or 
+$$V_n \le M_n\cdot T_n$$where $M_n = \left[\max_{1\le l \le 2^n} \left| B({l\over2^n}) - B({l-1\over2^n}) \right|\right]$. Then $$T \ge T_n \ge {V_n\over M_n}.$$ As $\ninfty, M_n \rightarrow 0$ (a.s.) by B.M. path continuity. Since $V_n \rightarrow 1$ (a.s.) it follows that $T = \infty$ (a.s.)\\
+
+\subsection{On the Non-Differentiability of B.M. paths}
+Define, for $\{Z_i\}$ IID $N(0,1)$, \{ $r_i(x), 0\le x \le 1$ orthonormal (o.n.) functions\}
+
+$$W_n(t) = \sum_{i=1}^n Z_i \int_0^t\, r_i(x) \, dx,$$ Then $W_n(t) \rightarrow B(t)$ in quadratic mean (q.m.). If $B(t)$ had differentiable paths, one would suppose that the derivatives $${d\over dt} W_n(t) = \sum_{i=1}^n\, Z_i r_i(t)$$ would be a Cauchy sequence in q.m., that is that $$E\big[\left({d\over dt}W_n(t) {d\over dt}W_n(t) \right)^2\big] \rightarrow 0$$ as $\ninfty$. But $$\hbox{Var}\big[{d\over dt} W_n(t)\big] = \sum_{i=1}^n r_i^2(t) \uparrow \infty,$$ so that $$\{ {d\over dt} W_n(t)\}$$ cannot converge in q.m.
+
+\subsection{Brownian motions are ``continuous''}
+
+Define a process $K(t)$ to be a Normal Process with $0$ mean $E[K(t)] = 0$ and with covariance function given by 
+\begin{eqnarray*}
+\hbox{Cov}[K(s), K(t)] &=& \sigma^2 \delta(|t-s|)\\
+\hbox{Var}[K(t)]           &=& \infty \\
+\end{eqnarray*} where $\delta(x)$ is the Dirac-delta function. \\
+
+Claim $$W(t) = \int_0^t\, K(v) dv,$$ is B.M. with parameter $\sigma^2$.\\
+
+Proof: $$E[W(t)] = \int_0^t\, E[K(v)] \, dv = 0$$ and for $s<t$ 
+\begin{eqnarray*}
+\hbox{Cov}[W(s), W(t)] &=& E[\int_0^s \, K(u)\, du \int_0^t \, K(v)\, dv] \\
+&=& \int_0^s \int_0^t\, E[K(u)K(v)] du dv \\
+&=& \sigma^2 \int_0^s \int_0^t \delta(|u-v|) du dv \\
+&=& \sigma^2 \int_0^s \left[\int_0^s \delta(|u-v|) + \int_s^t \delta(|u - v|) \right]\\
+&=& \sigma^2 \int_0^s \int_0^s \delta(|u-v|) = \sigma^2 \int_0^s dv = \sigma^2 s\\
+\end{eqnarray*}
+
+So we see that $W(t)$ has the same properties as B.M. and hence B.M. can be written as an ``integral'' $$B(t) = \int_0^t \, K(v)\, dv.$$ Since integration ``improves'' continuity properties we can conclude that  ``$B(t)$ is continuous''.\\
+
+However, as shown above ${d\over dt} B(t) = K(t)$ ``does not exist.'' because B.M. is non-differentiable. \\
+
+Note: The stochastic process $K(v)$ used in the above derivation is known as ``white noise''.

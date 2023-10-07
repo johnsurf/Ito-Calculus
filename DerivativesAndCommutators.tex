@@ -1,0 +1,219 @@
+%   11/11/92 211121724  MEMBER NAME  REPORT1  (TEXFILES) M  TEX
+%format: latex    %hyphen: English
+%\documentstyle[11pt,leqno,epsfig]{note}
+%\documentstyle[11pt,epsfig]{note}
+%\documentstyle[11pt,epsfig,pstimes,psmath]{note}
+\documentstyle[epsf]{article}
+\font\twelverm=cmr12
+\font\tenbf=cmbx10
+\font\tenrm=cmr10
+\font\tenit=cmti10
+\font\elevenbf=cmbx10 scaled\magstep 1
+\font\elevenrm=cmr10 scaled\magstep 1
+\font\elevenit=cmti10 scaled\magstep 1
+\font\ninebf=cmbx9
+\font\ninerm=cmr9
+\font\nineit=cmti9
+\font\eightbf=cmbx8
+\font\eightrm=cmr8
+\font\eightit=cmti8
+\font\sevenrm=cmr7
+%
+%  `pstimes.sty' sets \rm to be Times, and `psmath.sty' sets the math
+%  in Times as well.
+%
+\textwidth = 6.5truein
+\textheight = 8.5truein
+\oddsidemargin=0.2truein
+\evensidemargin=0.2truein
+\topmargin=0.50truein
+%\notename{UCD/IIRPA} \notenumber{92-24}
+\begin{document}
+\null
+%\hbox to \hsize{\hfill UCD/IIRPA~92-24}
+\begin{center}{{\tenbf Derivatives and Commutators}}
+		\vglue 1.0cm
+ 	       {\tenrm JOHN R.\,\,SMITH\\}
+	        %\baselineskip=13pt
+	       %{\tenit Physics Department\\
+	        %University of California, Davis\\}
+                 % \baselineskip=12pt
+               %{\tenit Davis, CA 95616, USA\\}
+\end{center}
+%
+%\newmathalphabet{\oldcal}
+%\addtoversion{times}{\oldcal}{cmsy}{m}{n}
+\newcommand{\unit}[1]{\mbox{\it #1}}
+\newcommand{\subs}[1]{\mbox{\scriptsize\it #1}}
+\def\Q2{$Q^2$}
+\def\sgp{$\sigma_{\gamma p}\:$}
+\mathchardef\Lcur="324C
+\def\crfive{\cr\noalign{\vskip 5pt}}
+\def\crten{\cr\noalign{\vskip 10pt}}
+\def\cofac{\hbox{cofactor}}
+\def\gij{g_{ij}}
+\def\gijinv{g^{ij}}
+\def\half{1\over2}
+\def\gab{g_{\alpha\beta}}
+\def\gabinv{g^{\alpha\beta}}
+\def\gmunu{g_{\mu\nu}}
+\def\gmunuinv{g^{\mu\nu}}
+\def\gmu{\gamma^\mu}
+\def\gmudag{\gamma^{\mu\dag}}
+\def\gnu{\gamma^\nu}
+\def\gmuc{\gamma_\mu}
+\def\gnuc{\gamma_\nu}
+\def\gzero{\gamma^0}
+\def\gone{\gamma^1}
+\def\gtwo{\gamma^2}
+\def\gthree{\gamma^3}
+\def\gfive{\gamma_5}
+\def\gfive{\gamma_5}
+\def\gzeroc{\gamma_0}
+\def\gonec{\gamma_1}
+\def\gtwoc{\gamma_2}
+\def\gthreec{\gamma_3}
+\def\qsq{{Q^2\over4E_1^2}}
+\def\qr2{{Q^2\over2}}
+\def\q2{{Q^2}}
+\def\hy{\hat{y}}
+\def\be{\begin{equation}}
+\def\ee{\end{equation}}
+\newcommand{\bra}[1]{\langle #1|}
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\braket}[2]{\langle #1|#2\rangle}
+
+\newcommand{\Tr}{{\rm Tr}}
+
+%\maketitle
+
+%some definitions
+%\setlength{\oddsidemargin}{0cm}
+%\setlength{\textwidth}{17cm}
+%\setlength{\topmargin}{-3cm}
+%\setlength{\textheight}{25cm}
+%\setlength{\unitlength}{1mm}
+%\hsize=6.0 true in
+%\vsize=8.40 true in
+%\pagestyle{plain}
+\parindent = 0.cm
+\vglue 0.3cm
+\rightskip=3pc
+\leftskip=3pc
+\twelverm
+
+%\noindent
+
+\section{Derivatives and Commutators}
+
+Using the Chain Rule of Calculus we define the derivative of $X^n$ as
+
+$${dX^n\over dt} = nX^{n-1}\, {dX\over dt}$$
+
+We ask: Can the derivative operation be defined in terms of discrete operations, or operators which appear to be discrete?\\
+
+Let use imagine two operators $A$ and $B$. The commutator of $A$ and $B$ is written as  $[A,B]$ and is defined as 
+
+$$\left[A,B\right] = AB - BA$$\\
+
+For example the operators may be defined by their action on a set of functions. Such is the case in Quantum Mechanics for the operators $p$ and $q$ which play the role of kinematic variables corresponding to ``observables'' of momentum and position.\\
+
+Suppose the operators $A$ and $B$ commute with their commutaors, i.e., $$[B, [A,B]] = [A, [A,B]] = 0$$
+
+Consider the following procedure: 
+
+\begin{eqnarray*}
+[A,B^n] &=& AB^n - B^nA \\
+             &=& ABB^{n-1} - BAB^{n-1}  +  B(AB)B^{n-2} - B(BA)B^{n-3} + ... + B^{n-1}AB - B^{n-1}BA\\
+             &=& [A,B] B^{n-1} + B[A,B]B^{n-2} +  ... + B^{n-1}[A,B]\\
+\end{eqnarray*}
+
+Using the fact that $B$ commutes with $[A,B]$ we obtain
+
+$$[A,B^n] = B^{n-1}[A,B] + B^{n-1}[A,B] + ...+ B^{n-1}[A,B] = nB^{n-1} [A,B]$$
+
+Also, using $[A^n,B] = - [B,A^n]$ we can also obtain $$[A^n,B] = - nA^{n-1}[B,A] = nA^{n-1}[A,B]$$\\
+
+It seems therefore that we can get similar properties as differentiation using operators $A$ and $B$ by identifying the 
+derivative operation by this correspondence: $$ {dA\over dt} = [A,B]$$ and therefore $${dA^n\over dt} = [A^n,B] = nA^{n-1} {dA\over dt} = nA^{n-1} [A,B]$$
+
+The above correspondence appears to be fundamental to Quantum Mechanics using the dynamical variables $q = A$ and $p = B$ which lead to the Schr\"odinger picture with position operator $q = x$ and momentum operator $p = -i\hbar {\partial\over \partial_x}$ with the famous commutation rule $$\large [q,p] = i\hbar$$.
+
+Perhaps such commutation algebra can be used to eliminate the derivative at a more fundamental level and free mechanics from continuous coordinates? \\
+
+Also, observe that the Right Hand Side (RHS) of the commutation rule can be written in terms of the identity operator $I$ (in matrix language $I$ is the $n \times n$ unit matrix for some finite vector space of dimension $n$) as follows:
+
+$$\large [q,p] = i\hbar\, I$$ and so the commutator of $q$ and $p$ is a multiple of the unit matrix $I$. This presents an interesting problem because there is a matrix representation associated with our operators $A$ and $B$ (or $p$ and $q$) -- this is similar to the correspondence between the Heisenberg pictures and the Schr\"odinger pictures. Therefore we can think of $A$ and $B$ as``square" matrices corresponding to a transformation on a linear vector space. But this is exactly where a complication develops. Because, for any square matrices $A$ and $B$ we have that the trace operation is cyclic, viz. $\Tr(AB) = \Tr(BA)$ and hence $$\Tr([A,B]) = \Tr(AB - BA) = \Tr(AB) - \Tr(BA) = 0.$$ This fact contradicts the commutation relation because $\Tr(I) = n$ for any finite dimensional vector space in $n$ dimensions. This contraction appears to go away if we use infinite-dimensional vector spaces! This is one way to understand why infinite dimensional vector spaces (etc. with scalar products, etc. Hilbert Spaces) are fundamental to Quantum Mechanics. \\
+
+Conclusion -- Commutators have similar properties as derivative operators. Perhaps commutators are more useful in situations were there is no way to define a derivative due to fundamental limits on discreteness of the coorindates in space-time.
+
+
+%\begin{description}
+%\item[\it Reflexive.] Since $x = e^{-1}xe$, x is conjugate to itself.
+%\item[\it Symmetric.] If $y=g^{-1}xg$ we have $x=gyg^{-1} = g^{-1})^{-1}y g^{-1}$.
+%\item[\it Transitive.] If $y=g^{-1}xg$ and $z=h^{-1}yh$ we have $z=h^{-1}g^{-1}xgh=(gh)^{-1}x(gh).$
+%\end{description}
+
+%\begin{eqnarray*}
+%   P_1 & = & (E_1,0,0,-E_1),      \\
+%   P_2 & = & (E_2,E_2\sin\theta\cos\phi,E_2\sin\theta\sin\phi,
+%               -E_2\cos\theta),   \\
+%   P_3 & = & (E_3,0,0,\beta E_3),      \\
+%   q   & = & (E_1 - E_2,-E_2\sin\theta\cos\phi,-E_2\sin\theta\sin\phi,
+%                    E_2\cos\theta - E_1).
+%  \end{eqnarray*}
+
+%\begin{figure*}[hb]
+%\epsfysize=6cm %%%% whatever vertical size you want in cm or inches
+%\centerline{\epsfbox{user$1:[smith.tex.eps]feyn.eps}}
+%\caption[fig1]{Definition of Kinematic Variables.}
+%\label{fig:feyn}
+%\end{figure*}
+
+%  \begin{eqnarray*}
+%   y\     & \approx & 1 - {E_2\over E_1} {(1+\cos\theta)\over2}, \\
+%    \qsq \ & \approx & {E_2\over E_1}{(1-\cos\theta)\over2}, \\
+%    x      & \approx & {Q^2\over sy}.
+%  \end{eqnarray*}
+
+%\[ \begin{array}{lll} 
+%  {\cal M}^{++}=({\cal M}^{22} + {\cal M}^{11})/2, 
+%& {\cal M}^{+0}=({\cal M}^{23} -i{\cal M}^{13})/\sqrt{2},
+%& {\cal M}^{+-}=({\cal M}^{22} - {\cal M}^{11})/2, \\ [8pt]
+%  {\cal M}^{0+}=({\cal M}^{32} +i{\cal M}^{31})/\sqrt{2}, 
+%& {\cal M}^{00}= {\cal M}^{33}, 
+%& {\cal M}^{0-}=({\cal M}^{32} -i{\cal M}^{31})/\sqrt{2}, \\ [8pt]
+%  {\cal M}^{-+}=({\cal M}^{22} - {\cal M}^{11})/2, 
+%& {\cal M}^{-0}=({\cal M}^{23} +i{\cal M}^{13})/\sqrt{2}, 
+%& {\cal M}^{--}=({\cal M}^{22} + {\cal M}^{11})/2. \\ [8pt]
+%\end{array} \] 
+
+%\[ \begin{array}{lll} 
+%  {\cal M}^{++}=({\cal M}^{22} + {\cal M}^{11})/2, 
+%& {\cal M}^{+0}= {\cal M}^{23}/\sqrt{2},
+%& {\cal M}^{+-}=({\cal M}^{22} - {\cal M}^{11})/2, \\ [8pt]
+%  {\cal M}^{0+}= {\cal M}^{32}/\sqrt{2}, 
+%& {\cal M}^{00}= {\cal M}^{33}, 
+%& {\cal M}^{0-}= {\cal M}^{32}/\sqrt{2}, \\ [8pt]
+%  {\cal M}^{-+}=({\cal M}^{22} - {\cal M}^{11})/2, 
+%& {\cal M}^{-0}= {\cal M}^{23}/\sqrt{2}, 
+%& {\cal M}^{--}=({\cal M}^{22} + {\cal M}^{11})/2. 
+%\end{array} \]
+%
+%\begin{thebibliography}{99}
+%\bibitem{BCDMS} J.J.Aubert et al., EMC Collaboration,
+% Nucl.Phys. B259(1985)189;\\
+% A.C.Benvenuti et al., BCDMS Collaboration, Phys.Lett.B223(1989)485
+%\bibitem{kaiserf}     F. Eisele, {\em First Results from the H1
+%Experiment at HERA}, and
+%                      F. Brasse, {\em The H1 Detector at HERA},
+%                      Invited talks, Proceedings of the
+%            26th International Conference on High Energy Physics,
+%                   Dallas (1992) and DESY preprint 92-140 (1992)
+%\bibitem{H1-249} I.\, Abt, J.R.\,Smith, {\em MC Upgrades to Study
+%Untagged Events}, H1 Internal Note H1-249, (1992).
+%H1-249 considered only the diagonal elements of the Photon Flux
+%for photons coupled to Spin-1/2 particles.
+%\end{thebibliography}
+ %
+ \end{document}

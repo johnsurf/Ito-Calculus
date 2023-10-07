@@ -1,0 +1,239 @@
+\section{Stochastic Processes}
+\label{sec:stochastic}
+ A stochastic process $\{X(t), t\in T\}$ is a parameterized collection of random variables. For every value of the parameter $t \in T, X(t)$ is a random variable. Often $t$ is taken to be time and $X(t)$ is referred to as the {\elevenit state}\/ of the stochastic process at time $t$. $T$ is the {\elevenit index set}\/ of the process and can consist of discrete values or can be in interval of the real line. When $T$ is a countable set the stochastic process is said to be a {\elevenit discrete-time process}\/ or a {\elevenit discrete parameter process} and denoted by $\{ X_t\}_{t\in T}$. If $T$ is an interval of the real line, then the stochastic process is said to be a {\elevenit continuous-time process}\/ or a {\elevenit continuous parameter process} and denoted, for example by $\{X(t), t\ge 0\}$ where $T$ is the halfline $[0,\infty)$. The {\elevenit state space}\/ of the process is defined to be the set of all possible values that the random variables $X(t)$ can take on. The random variables $X(t)$ can be scalars or vectors. If the values of $X(t)$ are discrete, then the stochastic process is said to have a {\elevenit discrete state space}. If they are continuous, the process is said to have a {\elevenit continuous state space}.\\
+
+ The random variables that make up $X(t)$ are 
+ defined on a probability space $(\Omega, {\cal F}, P)$ and assume values in $R$ if the process is scalar-valued or $\mathbb{R}^n$ if the process is vector-valued. A continuous parameter space $T$ is usually the halfline $[0,\infty)$ but it may also be an interval $[a,b]$, the non-negative integers in the case of a discrete parameter process or even subsets of $\mathbb{R}^n$ for $n\ge1$.\\
+
+Using the notations $X_t(\omega)$ or $X(t,\omega)$) to represent the dependence of the stochastic process on $t$ as well as the random variable $\omega$, then for each $t\in T$ fixed we have a random variable $$\omega \rightarrow X_t(\omega), \quad \omega\in \Omega.$$ On the other hand, fixing $\omega \in \Omega$ we can consider the function $$t\rightarrow X_t(\omega), \quad t\in T$$ which is called the path of $X_t$. Once $\omega$ is selected, the entire path $X_t(\omega)$ is determined. \\
+
+One can also consider the stochastic process as a function of two variables $t$ and $\omega$, i.e., $X(t,\omega)$ in place of $X_t(\omega)$. Then we can consider the stochastic process corresponding to the mapping $$(t,\omega) \rightarrow X_t(\omega)$$ from $T \times \Omega\rightarrow \mathbb{R}^n$.\\
+
+The concepts of mean and variance given above for a statistical sample, can be extended accordingly into functions for stochastic processes as follows \\ \\
+Mean: The mean function $\mu(t)$ is defined by  $$\mu(t) = E[X(t)]$$
+Variance: The variance function $\sigma^2(t)$ is defined by $$\sigma^2(t) = \hbox{Var}[X(t)]$$
+Autocorrelation: The autocorrelation function is given by $$\Gamma_X(t_1, t_2) = E[X(t_1) X(t_2)]$$
+Autocovariance: The variance function alone is not enough to specify the second
+             moments of a sequence of random variables. We therefore include the autocovariance function (covariance kernel) $$C_X(t_1, t_2) = E[ (X(t_1) - \mu(t_1) ) ( X(t_2) - \mu(t_2)) ]$$
+             
+We will confine ourselves to stochastic processes with $$E[X^2(t) ] < \infty$$for all t. Such stochastic processes are said to have {\elevenit finite average power}\/ and are also known as {\elevenit second-order processes}. The second moment of such a stochastic process is finite. This also implies by the Cauchy-Schwarz inequality that $E[|X(t)|]$ is finite (see Section [\ref{sec:CauchySchwarz}]. One interesting conclusion about process with finite $|X(t)|$ is $$P( |X| < \infty) = 1.$$ For if there were any finite non-zero probability that $|X| = \infty$, then $E[|X|] = \infty$. Therefore $P(|X| = \infty) = 0$.\\ 
+ 
+Dropping the explicit dependence on $\omega$ (and using the notation $\{X(t)\}$) a stochastic process $X(t)$ for values of t given in steps as $$0\le t_0 < t_1 < ...< t_k$$ can be displayed by values $X({t_0}), X({t_1}), ..., X({t_k})$. A stochastic process $\{ X(t), t\in T\}$, whose index set $T$ is linear, is said to be \\
+
+(1) {\elevenit strictly stationary of order k}, where $k$ is a positive integer, if for any points $t_1, \hdots, t_k \in T$ and any $h$ in $T$, the $k$-dimensional vectors
+$$(X(t_1), \hdots, X(t_k)) \quad\hbox{and}\quad (X(t_1 + h), \hdots, X(t_k + h))$$are identically distributed.  \\
+
+(2) {\elevenit strictly stationary}\/ if for any integer $k$ it is strictly stationary of order $k$.\\
+
+A continuous parameter stochastic process $\{ X(t), 0\le t >\infty \}$ is said to have {\elevenit independent increments} if $X(0) = 0$ and, for all choices of the indices $t_0 < t_1 < \hdots t_k$, the $k$ 
+random variables
+$$X({t_1}) - X(t_0), X({t_2}) - X({t_1}), ..., X({t_k})- X({t_{k-1})}$$are independent. If in addition to being {\elevenit independent}, the increments have the property of {\elevenit stationarity}, or that $X({t+h})- X({s+h})$ has the same distribution as $X(t) - X(s)$ for any $t$ and $s$ and for all $h$, then the stochastic process is said to have  {\elevenit stationary independent increments}\, (SII). \\
+
+Another notion of stationarity is {\elevenit covariance stationarity}: A stochastic process $\{X(t), t \in T\}$ is said to be covariance stationary if it has finite second moments, if its index set $T$ is linear, and if its covariance kernel $C_X(s,t)$ is a function only of the absolute difference $|s-t|$, in the sense that there exists a function $R(v)$ such that for all $s$ and $t$ in $T$ 
+
+$$C_X(s,t) = R(s-t).$$ $R(v)$ has the property that for every $t$  and $v$ in $T$
+$$\hbox{Cov}[X(t), X(t+v)] = R(v).$$
+
+\section{Random Walk in One Dimension}
+\label{sec:RandomWalks}
+Let $U=(U_1, U_2, \hdots)$ be a sequence of independent random variables, each taking the values $-1$ and $1$ with probabilities $p\in[0,1]$ and $q = 1-p$ respectively. 
+Let $V = (V_0, V_1, V_2  \hdots)$ be the partial sum process associated with $U$ starting with the initial step counter value $V_0 = 0$: 
+$$V_0 = 0, \quad  V_n = V_0 + \sum_{i=1}^n U_i, \quad n = 1, 2, \hdots$$ The sequence $V_0, V_1, V_2 \hdots$ is called a simple random walk in one dimension with parameter $p$.\\
+
+We imagine a person walking or a particle moving on an axis, so that at each discrete time step of duration $\tau$, the walker moves either one unit to the right 
+with probability $p$ or one unit to the left with probability $1 - p$, independently from step to step. $V_n$ keeps count of the net number of steps in the positive direction from the origin.\\
+
+The indicator function $I_k$ for $U_k$ is defined as follows: 
+$$ I_k = \Big\{
+\begin{array}{cl}
+1 & \hbox{~if $U_k = ~~1$} \\ 
+0 & \hbox{~if $U_k = -1$}
+\end{array}
+$$
+In terms of $U_k$ we can write the indicator function as 
+\be I_k = {1\over2}(U_k + 1). \label{eqn:Indicator} \ee The expectation of the Indicator Function satisfies: $$\displaystyle{E[I_k] = \sum_{x_k \in  \{I_k = 1\}} P(x_k)  = P\{I_k = 1\} = p}.$$  Also,  $E[I_k^2] = p$ by similar reasoning. Hence $$\hbox{Var}[I_k] = E[I_k^2] = (E[I_k])^2 = p - p^2 = p(1-p) = pq.$$
+Using Eq. [\ref{eqn:Indicator}] we find that $U_k = 2I_k - 1$ and $U_k^2 = 4I_k^2 - 4I_k + 1$. Therefore the respective mean and variance of $U_k$ is given by 
+\bearray  E[U_k] &=& 2p - 1 = p -q \\
+ \hbox{Var}[U_k] &=& E[4I_k^2 - 4I_k + 1] - (2p-1)^2 \\
+ &=& 1 - (2p-1)^2 = 1 -4p^2 + 4p - 1\\
+ &=& 4p(1-p) = 4pq
+\eearray
+Since the $U_k, k = 1, 2, \hdots, I_n$ are a set of $n$ independent random variables, we find that 
+\bearray
+E[V_n] &=& n(p-q) \\
+\hbox{Var}[V_n] &=& 4npq
+\eearray
+For large values of $n$ and moderate $p$ we can invoke the Central Limit Theorem (see Section \ref{sec:CentralLimit} and Theorem \ref{thm:CentralLimit}) with asymptotic mean and variance given by $\mu_n = n(p-q)$ and $\sigma_n^2 = 4npq$ respectively, to deduce the asymptotic limiting distribution of $V_n$ for large $n$ to be 
+
+$$ P\Bigg\{ {V_n - \mu_n \over \sigma_n } \le a \Bigg\} \rightarrow {1\over \sqrt{2\pi}} \int_{-\infty}^a \exp\left(-{x^2 / 2}\right)\,dx.$$
+
+Therefore the asymptotic probability density function for $V_n$ is given by the Gaussian: 
+
+\be f_{V_n}(v) \approx {1\over\sqrt{8\pi npq}} \exp\Big\{- {(v - n[p-q])^2\over 8npq} \Big\} \label{eqn:netCounts}\ee 
+
+The probability distribution for the random walker step count follows an approximate Gaussian probability distribution. Hence we anticipate that the same type of probability distribution will describe the position of a particle undergoing Brownian motion after $n$ ``steps'' (where each step is a collision that is assumed to knock the particle either to the right or to the left by the same distance $l$). If the length of each step in the random walk is $l$ then the position from the origin can be described in terms of $x = lv$.  Using Eq. [\ref{eqn:netCounts}] we can relate the probability that a particular undergoing the above ``random walk'' will be located in an interval $dx$ about $x$ is
+\bearray
+f_X(x) dx &=& f_{V_n}(v)\,dv = f_{V_n}(x/l) {dx\over l}\\
+&\approx& {1\over\sqrt{2\pi} \sigma} \exp\Big\{- {(x - \mu)^2\over 2\sigma^2} \Big\}\, dx,%\label{eqn:netCounts}
+\eearray where $\mu = nl(p-q)$ and $\sigma = 2l\sqrt{npq}$. From this derivation we see that the probability density for a random walker which starts at the origin to be 
+within an interval of width $dx$ at $x$ after $n$ steps is given by 
+
+ \be f_{X_n}(x) = {1\over\sqrt{2\pi} \sigma} \exp\Big\{- {(x- \mu)^2 / 2\sigma^2} \Big\} \label{eqn:walkGaussian}\ee 
+Eq. [\ref{eqn:walkGaussian}] is an important property for random walks and also demonstrates the connection between Brownian motion and the normal distribution.\\
+
+Let us re-introduce the duration of a time step $\tau$ take a limit as the step size $l$ and $\tau$ approach zero as $\ninfty$ is such a way that 
+$$ {\sigma^2\over 2\tau} = D,  \quad nl(p-q) = x_0, \quad n\tau = t$$ where $D$ is a constant, $x_0$ is the mean position and $t$ is the total duration of $n$ steps. Taking the limit we find  
+ \be \lim_{\ninfty} f_{X_n}(x) = {1\over\sqrt{4\pi Dt} } \exp\Big\{-{(x- x_0)^2 / 4Dt} \Big\} \label{eqn:walkEinstein} \ee 
+Eq. [\ref{eqn:walkEinstein}] was derived by Albert Einstein in his original description of the probability law for the position of a physical particle undergoing Brownian motion  \cite{Einstein}.
+The constant $D$ is known as the constant of diffusion and can be related to other physical constants in the case of Brownian Motion:
+$$D = {2RT\over Nf},$$ where $R$ is the universal gas constant, $T$ is the absolute temperature, $N$ is the Avogadro number, and $f$ the friction coefficient specific to the particles undergoing Brownian motion. In light of the connection with the Random Walk, we see that Einstein's result emerges in probability theory as a consequence of the Central Limit Theorem. We will use Eq. [\ref{eqn:walkEinstein}] as one of the fundamental properties of the mathematical abstraction of Brownian Motion known as the Wiener Process. 
+
+
+\section{Brownian Motion -- The Wiener Process}
+\label{sec:Wiener}
+
+The mathematical idealization of Brownian motion is called the Wiener process and it is an example of a stochastic process with stationary independent increments.  \\ 
+
+A stochastic process $\{B(t), t\ge 0\}$ taking values in $R$ is said to be a Brownian motion in 1-dimension (a Wiener process) if\\
+
+(a) $\{B(t), t\ge 0\}$ has stationary independent increments,\\
+(b) For every $t>0, B(t)$ is normally distributed, \\
+(c) For all $t>0, E[B(t)] = 0$\\
+(d) $B(0) = 0$\\
+
+Obviously the above stochastic process can be extended to $\mathbb{R}^n$ by allowing $B(t)$ to be vector-valued with $n$ components.\\
+
+We use the notation $E[B(t)]$ to represent the expectation, or the mean, of the random number $B(t)$ averaged over the elementary outcomes $\omega$ in $\Omega$.\\
+
+We will also use both notation $B_t(\omega)$ in place of $B(t)$ to emphasize the dependence of the Brownian motion on the particular elementary outcome $\omega \in \Omega$ that gives rise to it.\\
+
+(Without loss of generality the above Brownian motion is assumed to start from the origin $0$. We could use any point $B(0) = x$ on the real number line as the starting point.)\\
+
+Brownian motion can be considered as the integral with respect to time of ``white noise'' (more on this later). Because integration ``improves'' continuity properties representations of Brownian motion, $B(t)$ will have better continuity properties than ``white noise''. It appears to be reasonable to describe Brownian motion in terms of the observed values taken at discrete time intervals, say at the points $t_1, t_2, ..., t_n$ and hope to characterize it by finding a joint probability function for $B(t_1), B(t_2), ..., B(t_n)$.\\
+
+Let us examine some of the consequences of discretizing the $t$ (or time) parameter space. Let us break up the interval $[0,t)$ into $[0,s) \cup [s,t)$.  This can be thought of as several points in order $0 \le s \le t$. \\
+
+By (b) above, we see that $$E[B(t) - B(s)] = 0$$ because $E[B(t) - B(s)] = E[B(t)] - E[B(s)] = 0 - 0 = 0$\\
+
+However more characteristics can be obtained by using properties (a) through (d) above. We use (d) out of convenience -- there is nothing sacred about setting the coordinate system up so that at $t=0$ we have $B(0) = 0$. It is a convenient choice that simplifies our derivations.\\
+
+Now consider the time interval $0 \le s \le t$. We can assign values $t_1$ and $t_2$ to the lengths of the respective separations as 
+\begin{eqnarray*}
+s &=& t_1 \\
+t &=& t_1 + t_2 \quad \hbox{and conversely} \\
+t_1 &=& s \\
+t_2 &=& t - s
+\end{eqnarray*}
+
+Notice that we can write $$B(t) = B(s) + B(t) - B(s)$$
+Now $E[B(s)] = 0$ and $E[B(t) - B(s)] = 0$ for $t\ge s\ge0$ and using the property of stationary independent intervals we also have $$E[B(s) (B(t) - B(s))] = E[B(s)]\cdot E[B(t) - B(s)] = 0$$\\
+
+Since $B(s)$ and $B(t) - B(s)$ for $t\ge s \ge 0$ are independent random variables we can express the variance $\hbox{Var}[B(t)]$ as $$\hbox{Var}[B(t)] = \hbox{Var}[B(s)] + \hbox{Var}[B(t) - B(s)]$$ 
+Using the property of Stationary Independent Increments we see that $$\hbox{Var}[B(t) - B(s)] = \hbox{Var}[B(t-s) - B(0)] = \hbox{Var}[B(t-s)] = \hbox{Var}[B(t_2)]$$
+Using this result and noting that $s = t_1$ and $t = t_1 + t_2$ we can write 
+$$\hbox{Var}[B(t_1 + t_2)] = \hbox{Var}[B(t_1)] + \hbox{Var}[B(t_2)]$$ So that $f(t) = \hbox{Var}[B(t)]$ satisfies the property that 
+$$f(t_1 + t_2) = f(t_1) + f(t_2)$$ One can easily extend this by induction to $$f(\sum_{i=1}^n\, t_i) = \sum_{i=1}^n f(t_i)$$ Consider a rational number $t = n/m$ for integers $n$ and $m$. Then $$f(t) = f(n/m) = \sum_{i=1}^n\, f(1/m) = n\cdot f(1/m)$$ Also, $f(1) = f(m/m) = m\cdot f(1/m)$ and hence $$f(1/m) = (1/m)\cdot f(1).$$ Putting these facts together, we obtain $$f(t) = f(n/m) = (n/m) f(1).$$ Now if we represent $f(1)$ by the constant $c$, then $$f(t) = f(n/m) = (n/m)\cdot f(1) = c\cdot t.$$ Since $\hbox{Var}[X] \ge 0$ for any random variable $X$, then $c>0$ which we will denote by $c=\sigma^2$.\\
+
+Using these facts we find that $\hbox{Var}[B(t)] = \sigma^2 t$ and therefore
+$$\hbox{Var}[B(t)] = \hbox{Var}[B(s)] + \hbox{Var}[B(t) - B(s)]$$ can be written as $$\hbox{Var}[B(t) - B(s)] = \sigma^2(t-s)$$ when $t\ge s\ge0$. The general case can be written as 
+\be \hbox{Var}[B(t) - B(s)] = \sigma^2|t-s|. \label{eqn:variance}\ee
+
+Setting $s=0$ we obtain $$\hbox{Var}[B(t)] = E[(B(t))^2] - (E[B(t))^2 = E[B(t)^2] = \sigma^2t.$$
+
+Another consequence of Stationary Independent Increments using $B(t) = B(s) + B(t) - B(s)$ is that
+
+\begin{eqnarray*}
+E[B(s)B(t)] &=& E[B(s) \cdot (B(s) + B(t) - B(s)) ]\\
+                  &=& E[B^2(s)] + E[B(s)\cdot  (B(t) - B(s)]\\
+                  &=& E[B^2(s)] = \sigma^2 s
+\end{eqnarray*}
+since $E[B(s)\cdot (B(t) - B(s) ) ] = 0$ for $t\ge s\ge 0$. Since we assumed that $t\ge s\ge 0$ in the derivation we can summarize the general case as 
+\be E[(B(t) B(s)] = \sigma^2 \hbox{min}(s,t) \label{eqn:correlation}\ee\\
+
+The parameter $\sigma^2$ above characterizes the normal distribution referred to in part (b) above. If we take only one coordinate $x$ of the Brownian path and consider the motion as a function of time, then taking $\sigma=1$ normalizes the motion to fit the time scale. In this case we can develop a probability distribution for $x(t)$. Let us take $x(t) = 0$ at $t=0$ and consider the position of the particle seen at set of times $0 \le t_1 \le  t_2 \le \hdots \le t_n$. The assuming the time scale is chosen so that $\sigma=1$, then the probability that the particle lies between $x_1$ and $x_1 + dx_1$ at time $t_1, \hdots,$ between $x_n$ and $x_n + dx$ at time $t_n$ is \cite{Wiener1}
+$${ \exp\left[ -{x_1^2\over2t_1} - {(x_2-x_1)^2\over2(t_2-t_1)} - \hdots - {(x_n - x_{n-1})^2\over2(t_n - t_{n-1})}  \right] \over \sqrt{|(2\pi)^n t_1(t_2-t_1)\hdots (t_n-t_{n-1})|  } }\, dx_1\hdots dx_n$$ \\ The above probability measure was developed by Norbert Wiener in 1921 and represents an advance over the early work of Albert Einstein on Brownian motion \cite{Einstein}.\\
+
+In what follows we will examine further properties of Brownian Motion and Ito's Integral. It is occasionally useful to define two stochastic processes which are versions of each other: 
+
+\begin{definition}
+Suppose that $\{ X(t,\omega) \}$ and $\{ Y(t,\omega) \}$ are stochastic processes on $(\Omega, {\cal F}, P)$. Then we say that $\{ X(t) \}$ is a version of $\{ Y(t) \}$ if 
+$$P(\{\omega: X(t,\omega) = Y(t,\omega) \}) = 1\quad\hbox{for all t.}$$ Thus if $X(\omega,t) \in \mathbb{R}^n$, then from the point of view that a stochastic process is a probability law on $(\mathbb{R}^n)^{[0,\infty)}$ two such 
+processes are indistinguishable, but nevertheless their path properties may be different. Two stochastic processes that are different versions of each other can be thought of as belonging to the same equivalence class (see Section [\ref{sec:equivalence}]).
+\end{definition}
+
+The properties of Brownian motion will be discussed further in the next section, but in passing, please note the following famous theorem of Kolmogorov (see \cite{Baudoin}, \cite{vanZanten} and \cite{Oskendal1}).
+\begin{theorem}{(Kolmogorov's continuity theorem)} Suppose that the process $X = \{ X(t), t\ge 0\}$ satisfies the following condition: For all $T>0$ there exists positive constants $\alpha, \beta, D$ such that 
+\be E[|X(t) - X(s)|^\alpha] \le D\cdot |t-s|^{1+\beta}; 0\le s, t \le T. \label{eqn:continuity}\ee 
+Then there exists a continuous version of $X(t)$.
+\end{theorem} 
+
+\begin{proof}
+We follow van Zanten's proof\footnote{See Harry van Zanten, \cite{vanZanten}, section [1.3]}.
+First observe that by Chebyshev's inequality, Eq. [\ref{eqn:continuity}] implies that the process $X(t)$ is continuous in probability. 
+Without loss of generality, we assume that $t \in [0,T]$ with $T=1$ and work with subintervals, $\Delta_n$, made up of the dyadic rationals: $\Delta_n = {k/2^n: k=0,1,\hdots ,2^n}$ and let 
+$\displaystyle{D = \bigcup\limits_{n = 1}^{\infty} \Delta_n}$. Then $D$ is a countable set, and $D$ is dense\footnote{$\overline{A}$ is the closure of $A$, i.e., the set $A$ together with all its limit point (see \cite{Protter}, page 366): Let A be a  metric space. We say a set $A \subset S$ is {\it dense}\/ in S iff $\overline{A} = S $} in $[0, 1]$. Our next aim is to show that with probability 1, the process $X(t)$ is uniformly continuous on $D$. Pick any $\gamma \in [0, \beta/\alpha]$. Using Chebyshev's inequality again, we see 
+$$P( |X(k/2^n) - X((k-1)/2^n) | \ge 2^{-\gamma n} ) \le {K\over 2^{n(1+\beta - \alpha\gamma)}}$$for some positive constant $K$.
+It follows that
+$$ P(\max_{1\le k \le2^n} |X(k/2^n) - X((k-1)/2^n) | \ge 2^{-\gamma n} ) \le \sum_{k=1}^{2^n} P( | X(k/2^n) - X((k-1)/2^n) | \ge 2^{-\gamma n}) \le {K\over 2^{n(\beta -\alpha\gamma)} }$$
+ 
+Hence, by the Borel-Cantelli lemma (see Section [\ref{sec:BorelCantelli}]), there almost surely exists an $N \in \mathbb{N}$ such that
+\be \max_{1\le k \le2^n} |X(k/2^n) - X((k-1)/2^n) | \le 2^{-\gamma n}  \label{eqn:dyadicMax}\ee for all $n \ge N$.
+Next, consider an arbitrary pair $s,t \in D$ such that $0 < t-s < 2^{-N}$. 
+We aim to show that 
+\be | X(t) - X(s) | \le K |t-s|^\gamma, \label{eqn:induction}\ee for some positive constant $K$.
+ There exists an $n \ge N$ such that $2^{-(n+1)} \le  t - s < 2^{-n}$. We claim that if 
+$ s,  t \in \Delta_m$ for $m \ge n+1$, then
+\be  | X(t) - X(s) |  \le 2\sum_{k=n+1}^m 2^{-\gamma k} \label{eqn:twosum}\ee
+
+To see this we use induction. Suppose first that $s, t \in  \Delta_{n+1}$. Then necessarily, $t=k/2^{n+1}$ and $s = (k-1)/2^{n+1}$ for some 
+$k \in (1,\hdots,2^{n+1}$. By Eq. [\ref{eqn:dyadicMax}], it follows that
+$$  | X(t) - X(s) |  \le 2^{-\gamma (n+1)} $$
+ which proves the claim for $m = n + 1$. Now suppose that it is true for $m = n+1, \hdots, l$ 
+and assume that $s, t \in \Delta_{l+1}$. Define the numbers $s', t' \in \Delta_l$ by $s' = \min\{u \in \Delta_l : u\ge s\}, t' = \max\{u\in \Delta_l : u \le t\}.$
+Then by construction, $s\le s' \le  t' \le t$ and $s' - s \le 2^{-(l+1)}, t' - t \le 2^{-(l+1)}.$ Hence, by the triangle inequality, Eq. [\ref{eqn:dyadicMax}] and the induction hypothesis,
+\begin{eqnarray*}
+| X(t) - X(s) | &\le& |X(s') - X(s) | + |X(t') - X(t) | + |X(t') - X(s')| \\
+&\le& 2^{-\gamma(l+1)} + 2^{-\gamma(l+1)} + 2\sum_{k=n+1}^l 2^{-\gamma k} = 2\sum_{k=n+1}^{l+1} 2^{-\gamma k},
+\end{eqnarray*}
+ so the claim is true for $m = l + 1$ as well. The proof of Eq. [\ref{eqn:induction}] is now straightforward. 
+ Indeed, since $t, s \in \Delta_m$ for some large enough $m$, relation Eq. [\ref{eqn:twosum}] implies that
+ $$|X(t) - X(s) | \le 2\sum_{k=n+1}^\infty = {2\over 1-2^{-\gamma}} 2^{-\gamma(n+1)} \le {2\over 1- 2^{-\gamma}}|t-s|^\gamma$$
+%  ?Xs?²2 ??° 2??k = 2 2??(n+1) ² 2 |t?s|?. k=n+1 1?2?? 1?2??
+Observe that Eq. [\ref{eqn:induction}] implies in particular that, almost surely, the process $X(t)$ is uniformly continuous on $D$. 
+  In other words, we have an event $O \in \Omega$ with $P(O) = 1$ such that for all $\omega \in  O$, the sample path $X(t, \omega)$ is uniformly
+continuous on the countable, dense set $D$. Now we define a new stochastic process 
+$$Y(t) = \Bigg\{
+\begin{array}{ll}
+X(t) &\hbox{if $t\in D$} \\
+\lim_{t_n \to t, t_n \in D} X(t_n, \omega) &\hbox{if $t \not\in D$.} 
+\end{array}
+$$
+ The uniform continuity of $X(t)$ implies that $Y(t)$ is a well-defined, continuous stochastic process. 
+Since $X(t)$ is continuous in probability (see the first part of the proof), $Y(t)$ is a version of $X(t)$.\qed\end{proof}
+
+As an example, we will apply Kolmogorov's continuity theorem to $n$-dimensional Brownian motion: $B(t) = [B^{(1)}(t), B^{(2)}(t), \hdots, B^{(n)}(t)]$, where the components $B^{(j)}(t), 1 \le j \le n$ are independent $1$-dimensional Brownian motions. \\
+
+\begin{example}{(\elevenit Brownian motion exists)}\/
+
+Let $B(t)$ be a standard $1$-dimensional Brownian motion on $\mathbb{R}$ with $B(0) = 0$ and $\sigma^2 = 1$. 
+The moment generating function (see Section [\ref{sec:generating}]) is given by 
+\be E[ e^{u B(t)} ] = \exp({1\over2} u^2 t) \quad \hbox{for all $u\in \mathbb{R}^n.$} \ee
+
+From this we can conclude that 
+
+\be E[ e^{u B(t)} ] = \sum_{k=0}^\infty {u^k E[B^k(t)]\over k!}  = \sum_{j=0}^\infty {t^j u^{2j} \over 2^j j!} \ee
+Hence 
+$$E[B^{2k+1}(t)] = 0 \quad\hbox{and}\quad E[B^{2k}(t)] = {(2k)! t^k\over k! 2^k}$$ for $k=0,1, \hdots$. Note that all the odd powers of $k$ give zero expectations. \\
+
+We now extend the above argument to Brownian motion in $\mathbb{R}^n:$  
+
+\begin{eqnarray*}    
+E[| B(t) - B(s) |^4]  &=& \sum_{i=1}^n E[(B^{i} (t) - B^{i} (s))^4 + \sum_{i\ne j} E[ (B^{(i)} (t) - B^{(i)}(s))^2 (B^{(j)} (t) - B^{(j)}(s))^2 ]  \\
+&=& n\cdot {4!\over4\cdot2!}\cdot (t-s)^2 + n(n-1)(t-s)^2 \\
+&=& n(n+2)(t-s)^2
+\end{eqnarray*}
+Hence we see that $n$-dimensional standard Brownian motion satisfies the criterion for Kolmogorov's continuity theorem with $\alpha = 4, \beta = 1$ and $D=n(n+2)$ and therefore it 
+has a continuous version. We will look at this property again from a different point of view based on mean-square calculus and an intuitive approach representing Brownian motion as the integral of ``white noise''. Kolmogorov's continuity theorem is a powerful method.
+\end{example} 
+
+
